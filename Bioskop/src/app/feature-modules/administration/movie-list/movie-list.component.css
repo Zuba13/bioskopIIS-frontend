@@ -1,0 +1,71 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.movie-item {
+  width: calc(20% - 20px); /* Adjust width as needed */
+  margin-bottom: 20px;
+  display: flex; /* Add flex display */
+}
+
+.movie-card {
+  background-color: #141414; /* Dark background color */
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex; /* Add flex display */
+  flex-direction: column; /* Stack children vertically */
+  height: 100%; /* Ensure each card takes up full height */
+  width: 100%;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 77%; /* Use auto height to maintain aspect ratio */
+  object-fit: cover;
+  transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+
+.movie-details {
+  padding: 1rem;
+  text-align: center;
+  flex-grow: 1; /* Allow details to take remaining space */
+}
+
+.movie-title {
+  color: #fff; /* White text color */
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.movie-info {
+  color: #ccc; /* Light gray text color */
+  font-size: 0.9rem;
+}
+
+.get-tickets-btn {
+  background-color: #e50914; /* Red background color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.get-tickets-btn:hover {
+  background-color: #c80d13;
+}
