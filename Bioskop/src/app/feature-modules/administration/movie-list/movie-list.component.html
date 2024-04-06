@@ -10,7 +10,9 @@
             {{ shortenNum(movie.numVotes) }} votes
           </div>
           <div class="movie-info">{{ movie.duration }} min</div>
-          <button class="get-tickets-btn">GET TICKETS</button>
+          <button class="get-tickets-btn" (click)="goToMovieDetails(movie.id)">
+            GET TICKETS
+          </button>
         </div>
       </div>
     </div>

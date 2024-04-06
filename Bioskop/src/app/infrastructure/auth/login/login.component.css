@@ -1,15 +1,63 @@
-form {
-    margin-top:150px;
-    display: flex;
-    justify-content: center;
+.login-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
 }
 
-div {
-    width: 400px;
-    display:flex;
-    flex-direction: column;
+.netflix-logo {
+  width: 200px;
+  margin-bottom: 30px;
 }
 
-p {
-    margin-top: 10px;
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  box-shadow: 0 0 5px #e50914;
+}
+
+button[type="submit"] {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff0a16;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #8c8c8c;
+}
+
+.signup-link a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
 }

@@ -1,3 +1,5 @@
+import { Projection } from './projection.model';
+
 export interface Movie {
   id: number;
   title: string;
@@ -9,4 +11,5 @@ export interface Movie {
   image: string;
   createdAt: Date;
   updatedAt: Date;
+  projections?: Projection[] | null; // Add Projections field
 }

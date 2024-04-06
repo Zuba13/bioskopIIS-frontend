@@ -1,16 +1,29 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div>
-        <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="username" type="text"/>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password"/>
-        </mat-form-field>
-    <button color="primary" type="submit" mat-raised-button>Login</button>
-    <p>Don't have an account yet?<a href="/register">Sign Up</a></p>
-    </div>
-</form>
-
-
+<div class="login-container">
+  <img
+    src="https://assets.nflxext.com/ffe/siteui/login/images/Netflix_Logo_RGB.png"
+    alt="Netflix Logo"
+    class="netflix-logo"
+  />
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="username"
+        type="text"
+        placeholder="Email or phone number"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Sign In</button>
+  </form>
+  <div class="signup-link">
+    New to Netflix? <a routerLink="/register">Sign up now.</a>
+  </div>
+</div>

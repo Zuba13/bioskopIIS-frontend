@@ -1,0 +1,115 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(0.4); /* Adjust blur and brightness as needed */
+  z-index: -1; /* Ensure the background is behind other content */
+}
+
+.movie-details {
+  position: relative; /* Ensure the text is positioned relative to its parent */
+  z-index: 1; /* Ensure the text is above the background */
+  margin-top: 120px;
+  text-align: center;
+  color: white;
+  font-size: 80;
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", "Roboto", "Ubuntu",
+    sans-serif; /* Use Netflix Sans or similar font */
+}
+
+.movie-details h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: bold; /* Apply bold font weight to the title */
+}
+
+.genres {
+  font-size: 18px;
+  font-style: italic; /* Apply italic style to genres */
+}
+
+.projections-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.projection-group {
+  margin-bottom: 20px;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.date-row i {
+  font-size: 26px;
+  margin-right: 16px;
+}
+
+.date {
+  font-family: "Netflix Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.projection-items {
+  margin-top: 24px;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 48px;
+}
+
+.projection-item {
+  display: inline-block;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 32px;
+  padding: 12px 32px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 1s ease;
+  margin-right: 24px;
+}
+
+.projection-item:hover {
+  border: 2px solid #e50914;
+  transition: all 0.35s ease;
+}
+
+.projection-item:hover .time {
+  color: #e50914;
+  transition: color 0.35s ease; /* Slower transition for the time text color */
+}
+
+.projection-item:hover .hall {
+  color: #e50914;
+  transition: color 0.35s ease; /* Slower transition for the time text color */
+}
+
+.projection-item:last-child {
+  margin-right: 0;
+}
+
+.hall {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #fff; /* Color for the theater information */
+}
+
+.time {
+  font-size: 16px;
+  color: white;
+  font-family: "Netflix Sans", sans-serif;
+  margin: 0;
+  font-weight: 600;
+}

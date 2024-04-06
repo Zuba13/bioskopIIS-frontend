@@ -1,29 +1,31 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
 .navbar {
-  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(rgba(6, 6, 6, 0.92), rgba(18, 18, 18, 0.92));
   color: #fff;
   padding: 20px 0;
-}
-
-.container {
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+}
+
+.left-part {
+  display: flex;
+  gap: 2rem;
+  margin-left: 190px;
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: bold;
   text-decoration: none;
-  color: #fff;
+  color: #e50914;
+  font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu,
+    sans-serif;
+  letter-spacing: -1px;
 }
 
 .nav-links {
@@ -31,22 +33,41 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
 }
 
 .nav-links li {
-  margin-right: 20px;
+  margin-left: 30px;
 }
 
-.nav-links li:last-child {
-  margin-right: 0;
+.nav-links li:first-child {
+  margin-left: 0;
 }
 
 .nav-links li a {
   text-decoration: none;
   color: #fff;
+  font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu,
+    sans-serif;
   transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #e50914; /* Netflix red color */
+  color: #e50914;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-right: 190px;
+}
+
+.icons i {
+  font-size: 2rem;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.icons i:hover {
+  color: #e50914;
 }
