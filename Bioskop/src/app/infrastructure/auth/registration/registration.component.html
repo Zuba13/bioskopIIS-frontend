@@ -8,62 +8,185 @@
 <div class="no-scroll">
   <div class="registration-container">
     <h2 class="title">Sign Up</h2>
-    <form>
+    <form [formGroup]="registrationForm" (ngSubmit)="register()">
       <div class="form-group">
-        <input
-          class="form-control"
-          type="text"
-          id="firstNameInput"
-          placeholder="First Name"
-          onblur="validateFirstName()"
-        />
-        <input
-          class="form-control"
-          type="text"
-          id="lastNameInput"
-          placeholder="Last Name"
-          onblur="validateLastName()"
-        />
+        <div class="inside-form-group">
+          <input
+            class="form-control"
+            formControlName="firstName"
+            type="text"
+            id="firstNameInput"
+            placeholder="First Name"
+          />
+          <div
+            *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+            class="error-container"
+          >
+            <div class="error-icon">
+              <i class="fas fa-times-circle" style="color: #e50914"></i>
+            </div>
+            <div class="error-message">
+              <div *ngIf="firstName.errors?.['required']">
+                First Name is required.
+              </div>
+              <div *ngIf="firstName.errors?.['minlength']">
+                First Name must be at least 3 characters long.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inside-form-group">
+          <input
+            class="form-control"
+            formControlName="lastName"
+            type="text"
+            id="lastNameInput"
+            placeholder="Last Name"
+          />
+          <div
+            *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+            class="error-container"
+          >
+            <div class="error-icon">
+              <i class="fas fa-times-circle" style="color: #e50914"></i>
+            </div>
+            <div class="error-message">
+              <div *ngIf="lastName.errors?.['required']">
+                Last Name is required.
+              </div>
+              <div *ngIf="lastName.errors?.['minlength']">
+                Last Name must be at least 3 characters long.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="form-group">
-        <input
-          class="form-control"
-          type="text"
-          id="usernameInput"
-          placeholder="Username"
-          onblur="validateUsername()"
-        />
-        <input
-          class="form-control"
-          type="email"
-          id="emailInput"
-          placeholder="Email"
-          onblur="validateEmail()"
-        />
+        <div class="inside-form-group">
+          <input
+            class="form-control"
+            formControlName="username"
+            type="text"
+            id="usernameInput"
+            placeholder="Username"
+          />
+          <div
+            *ngIf="username.invalid && (username.dirty || username.touched)"
+            class="error-container"
+          >
+            <div class="error-icon">
+              <i class="fas fa-times-circle" style="color: #e50914"></i>
+            </div>
+            <div *ngIf="username.errors?.['required']" class="error-message">
+              Username is required.
+            </div>
+            <div *ngIf="username.errors?.['minlength']" class="error-message">
+              Username must be at least 5 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="inside-form-group">
+          <input
+            class="form-control"
+            formControlName="email"
+            type="email"
+            id="emailInput"
+            placeholder="Email"
+          />
+          <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="error-container"
+          >
+            <div class="error-icon">
+              <i class="fas fa-times-circle" style="color: #e50914"></i>
+            </div>
+            <div *ngIf="email.errors?.['required']" class="error-message">
+              Email is required.
+            </div>
+            <div *ngIf="email.errors?.['email']" class="error-message">
+              Email should be in the right format.
+            </div>
+          </div>
+        </div>
       </div>
       <div class="form-group">
-        <input
-          class="form-control"
-          type="password"
-          id="passwordInput"
-          placeholder="Password"
-          onblur="validatePassword()"
-        />
-        <input
-          class="form-control"
-          type="password"
-          id="confirmPasswordInput"
-          placeholder="Confirm Password"
-          onblur="validateConfirmPassword()"
-        />
+        <div class="inside-form-group">
+          <input
+            class="form-control"
+            formControlName="password"
+            type="password"
+            id="passwordInput"
+            placeholder="Password"
+          />
+          <div
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="error-container"
+          >
+            <div class="error-icon">
+              <i class="fas fa-times-circle" style="color: #e50914"></i>
+            </div>
+            <div *ngIf="password.errors?.['required']" class="error-message">
+              Password is required.
+            </div>
+            <div *ngIf="password.errors?.['minlength']" class="error-message">
+              At least 8 characters.
+            </div>
+          </div>
+        </div>
+        <div class="inside-form-group">
+          <input
+            class="form-control"
+            type="password"
+            formControlName="confirmPassword"
+            id="confirmPasswordInput"
+            placeholder="Confirm Password"
+          />
+          <div *ngIf="true" class="error-container">
+            <div
+              class="error-icon"
+              *ngIf="
+                (confirmPassword.value === '' && password.value !== '') ||
+                (confirmPassword.value !== password.value &&
+                  confirmPassword.value !== '')
+              "
+            >
+              <i class="fas fa-times-circle" style="color: #e50914"></i>
+            </div>
+            <div
+              *ngIf="confirmPassword.value === '' && password.value !== ''"
+              class="error-message"
+            >
+              Confirm Password is required.
+            </div>
+            <div
+              class="error-message"
+              *ngIf="
+                confirmPassword.value !== password.value &&
+                confirmPassword.value !== ''
+              "
+            >
+              Passwords do not match.
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-primary" type="button" onclick="register()">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="registrationForm.invalid"
+        [ngClass]="{
+          'disabled-button':
+            registrationForm.invalid ||
+            confirmPassword.value === '' ||
+            confirmPassword.value !== password.value
+        }"
+      >
         Sign Up
       </button>
     </form>
     <div class="signin-link">
       Already have an account?
-      <span onclick="navigateToLoginPage()">Sign in here.</span>
+      <span (click)="navigateToLoginPage()">Sign in here.</span>
     </div>
   </div>
 </div>

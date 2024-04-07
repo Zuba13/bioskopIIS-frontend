@@ -17,6 +17,11 @@ export class LoginComponent {
     password: new FormControl(' ', [Validators.required]),
   });
 
+  navigateToRegisterPage(): void {
+    console.log('rutiranje');
+    this.router.navigate(['/register']);
+  }
+
   login(): void {
     const login: Login = {
       email: this.loginForm.value.email || ' ',
@@ -30,9 +35,5 @@ export class LoginComponent {
         },
       });
     }
-  }
-
-  navigateToRegisterPage(): void {
-    this.router.navigate(['/register']);
   }
 }
