@@ -36,7 +36,14 @@
           Invalid username or password.
         </div>
       </div>
-      <button class="btn btn-primary" type="button" (click)="login()">
+      <button
+        class="btn btn-primary"
+        type="button"
+        [disabled]="loginForm.invalid || isFieldEmpty()"
+        [style.opacity]="loginForm.invalid || isFieldEmpty() ? '0.5' : '1'"
+        [ngClass]="{ 'disabled-cursor': isFieldEmpty() }"
+        (click)="login()"
+      >
         Sign In
       </button>
     </form>

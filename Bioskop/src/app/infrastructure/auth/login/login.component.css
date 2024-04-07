@@ -123,3 +123,7 @@
   font-family: "Netflix Sans", Arial, sans-serif;
   font-weight: 600;
 }
+
+.disabled-cursor {
+  cursor: not-allowed;
+}

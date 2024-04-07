@@ -71,3 +71,38 @@
 .icons i:hover {
   color: #e50914;
 }
+
+.welcome {
+  color: #fff;
+  font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu,
+    sans-serif;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.login-btn {
+  background-color: #e50914;
+  border: 1px solid #e50914;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  padding-right: 24px;
+  padding-left: 24px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  color: white;
+  font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu,
+    sans-serif;
+  margin-left: 24px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #ff3d00;
+  transition: all 0.3s ease;
+}
+
+.nav-links li .login-btn:hover {
+  color: white;
+  transition: all 0.3s ease;
+}

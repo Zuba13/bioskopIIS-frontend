@@ -55,4 +55,11 @@ export class LoginComponent implements OnInit {
       console.log('Invalid form');
     }
   }
+
+  isFieldEmpty(): boolean {
+    return (
+      !this.loginForm.get('username')?.value ||
+      !this.loginForm.get('password')?.value
+    );
+  }
 }

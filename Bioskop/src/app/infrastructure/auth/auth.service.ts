@@ -14,7 +14,15 @@ import { Registration } from './model/registration.model';
   providedIn: 'root',
 })
 export class AuthService {
-  user$ = new BehaviorSubject<User>({ username: '', id: 0, role: '' });
+  user$ = new BehaviorSubject<User>({
+    username: '',
+    id: 0,
+    role: '',
+    firstName: '',
+    lastName: '',
+    money: 0.0,
+    email: '',
+  });
 
   constructor(
     private http: HttpClient,
@@ -43,7 +51,15 @@ export class AuthService {
   logout(): void {
     this.router.navigate(['/home']).then((_) => {
       this.tokenStorage.clear();
-      this.user$.next({ username: '', id: 0, role: '' });
+      this.user$.next({
+        username: '',
+        id: 0,
+        role: '',
+        firstName: '',
+        lastName: '',
+        money: 0.0,
+        email: '',
+      });
     });
   }
 
@@ -55,16 +71,25 @@ export class AuthService {
     this.setUser();
   }
 
+  getUserById(userId: number): Observable<User> {
+    return this.http.get<User>(environment.apiHost + 'users/' + userId);
+  }
+
   private setUser(): void {
     const jwtHelperService = new JwtHelperService();
     const accessToken = this.tokenStorage.getAccessToken() || '';
-    const user: User = {
-      id: +jwtHelperService.decodeToken(accessToken).id,
-      username: jwtHelperService.decodeToken(accessToken).username,
-      role: jwtHelperService.decodeToken(accessToken)[
-        'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
-      ],
-    };
-    this.user$.next(user);
+    const id = jwtHelperService.decodeToken(accessToken).user_id;
+    if (id) {
+      this.getUserById(id).subscribe(
+        (user: User) => {
+          this.user$.next(user);
+        },
+        (error) => {
+          console.error('Failed to retrieve user details:', error);
+        }
+      );
+    } else {
+      console.error('User ID not found.');
+    }
   }
 }
