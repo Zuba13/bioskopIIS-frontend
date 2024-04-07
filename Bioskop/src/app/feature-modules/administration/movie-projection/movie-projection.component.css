@@ -1,0 +1,161 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px) brightness(0.4); /* Adjust blur and brightness as needed */
+  z-index: -1; /* Ensure the background is behind other content */
+}
+
+.movie-details {
+  position: relative; /* Ensure the text is positioned relative to its parent */
+  z-index: 1; /* Ensure the text is above the background */
+  margin-top: 100px;
+  text-align: center;
+  color: white;
+  font-size: 80;
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", "Roboto", "Ubuntu",
+    sans-serif; /* Use Netflix Sans or similar font */
+}
+
+.movie-details h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: bold; /* Apply bold font weight to the title */
+}
+
+.genres {
+  font-size: 18px;
+  font-style: italic; /* Apply italic style to genres */
+}
+
+.projection-details {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ddd;
+}
+
+.projection-details p {
+  margin: 5px;
+}
+
+.projection-details span {
+  margin-right: 10px;
+}
+
+.projection-details span:last-child {
+  margin-right: 0;
+}
+
+.hall-layout {
+  margin-top: 32px;
+  display: flex; /* Use flexbox to layout rows horizontally */
+  flex-direction: column; /* Arrange rows vertically */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+.hall-row-container {
+  display: flex; /* Use flexbox to layout seats horizontally */
+  justify-content: center; /* Center the row horizontally */
+}
+
+.hall-row {
+  margin-bottom: 10px; /* Add some space between rows */
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.row-number {
+  font-weight: bold;
+  margin-right: 16px; /* Add some space between row number and seats */
+  color: white;
+  align-self: center;
+}
+
+.seat {
+  position: relative; /* Position seat number relative to the seat */
+  cursor: pointer;
+}
+
+.seat-number {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: white; /* Adjust color as needed */
+}
+
+.selected-seats-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-seats-info {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.selected-seats-info p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.selected-seats-info p:last-child {
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.proceed-to-payment {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.proceed-button {
+  padding: 15px 30px; /* Increase padding for larger button */
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* Increase border radius for a rounder button */
+  font-size: 18px; /* Increase font size for larger text */
+  font-family: "Netflix Sans", Arial, sans-serif; /* Use Netflix's custom font */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Add transform to the transition */
+}
+
+.proceed-button:hover {
+  background-color: #ff3d00;
+  transform: scale(1.01); /* Add scale effect on hover */
+}
+
+.no-seats-selected {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: inline-block;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.no-seats-selected p {
+  margin: 0;
+}

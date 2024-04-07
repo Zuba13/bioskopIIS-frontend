@@ -4,6 +4,7 @@ import { Movie } from './model/movie.model';
 import { environment } from 'src/env/environment';
 import { Observable } from 'rxjs';
 import { Projection } from './model/projection.model';
+import { Hall } from './model/hall.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +40,15 @@ export class MovieService {
   getProjectionsForMovie(movieId: number): Observable<Projection[]> {
     const url = `${this.apiUrl}/${movieId}/projections`;
     return this.http.get<Projection[]>(url);
+  }
+
+  getProjectionById(projectionId: number): Observable<Projection> {
+    const url = `${environment.apiHost}projections/${projectionId}`;
+    return this.http.get<Projection>(url);
+  }
+
+  getHallById(hallId: number): Observable<Hall> {
+    const url = `${environment.apiHost}halls/${hallId}`;
+    return this.http.get<Hall>(url);
   }
 }

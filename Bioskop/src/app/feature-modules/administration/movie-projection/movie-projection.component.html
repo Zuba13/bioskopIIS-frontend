@@ -1,0 +1,71 @@
+<div
+  *ngIf="movie"
+  class="background"
+  [style.backgroundImage]="'url(' + movie.image + ')'"
+></div>
+
+<div class="movie-details">
+  <h1>{{ movie.title }} ({{ movie.year }})</h1>
+  <p class="genres">{{ movie.genre }}</p>
+</div>
+
+<div class="projection-details">
+  <p>
+    <span>Date: {{ projection.date | date : "d. MMMM" }}</span>
+    <span>|</span>
+    <span>Time: {{ projection.time }}</span>
+    <span>|</span>
+    <span>Hall: {{ hall.id }}</span>
+  </p>
+</div>
+
+<div class="hall-layout">
+  <!-- Outer container for all rows -->
+  <div
+    *ngFor="let row of hallNumberOfRowsArray; let i = index"
+    class="hall-row-container"
+  >
+    <!-- Individual row -->
+    <div class="hall-row">
+      <!-- Display row number on the left side -->
+      <div class="row-number">ROW {{ i + 1 }}</div>
+
+      <!-- Seats for the current row -->
+      <div
+        class="seat"
+        *ngFor="let seat of hallSeatsPerRowArray; let j = index"
+        (click)="toggleSeatSelection(i, j)"
+      >
+        <!-- Use selectedChair.png if the seat is selected, otherwise use chair.png -->
+        <img
+          [src]="
+            isSeatSelected(i, j)
+              ? 'assets/selectedChair.png'
+              : 'assets/chair.png'
+          "
+          alt="Cinema Seat"
+        />
+
+        <!-- Display seat number on each seat -->
+        <div class="seat-number">
+          {{ i * hallSeatsPerRowArray.length + j + 1 - i * hall.seatsPerRow }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="selected-seats-wrapper" *ngIf="countSelectedSeats() > 0">
+  <div class="selected-seats-info">
+    <p>Selected Seats: {{ countSelectedSeats() }}</p>
+    <p>Total Price: {{ calculateTotalPrice() | currency }}</p>
+  </div>
+</div>
+<div class="proceed-to-payment" *ngIf="countSelectedSeats() > 0">
+  <button class="proceed-button">Proceed To Payment</button>
+</div>
+<div class="selected-seats-wrapper">
+  <div class="no-seats-selected" *ngIf="countSelectedSeats() === 0">
+    <p>Please select your seats by clicking on them.</p>
+  </div>
+</div>

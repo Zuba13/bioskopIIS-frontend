@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { Movie } from '../model/movie.model';
 import { Projection } from '../model/projection.model';
@@ -15,7 +15,8 @@ export class MovieProjectionsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +34,10 @@ export class MovieProjectionsComponent implements OnInit {
           this.projections = projections;
         });
     });
+  }
+
+  navigateToProjectionDetails(projectionId: number): void {
+    this.router.navigateByUrl(`/projection/${projectionId}`);
   }
 
   // Method to group projections by date

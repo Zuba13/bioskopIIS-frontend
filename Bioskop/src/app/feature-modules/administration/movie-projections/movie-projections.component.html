@@ -27,8 +27,9 @@
         <div
           *ngFor="let projection of group.projections"
           class="projection-item"
+          (click)="navigateToProjectionDetails(projection.id)"
         >
-          <p class="hall">HALL {{ projection.theatreId }}</p>
+          <p class="hall">HALL {{ projection.hallId }}</p>
           <p class="time">{{ projection.time }}</p>
           <!-- Add other projection details here -->
         </div>

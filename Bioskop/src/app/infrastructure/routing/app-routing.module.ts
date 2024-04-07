@@ -6,6 +6,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { RegistrationComponent } from '../auth/registration/registration.component';
 import { MovieListComponent } from 'src/app/feature-modules/administration/movie-list/movie-list.component';
 import { MovieProjectionsComponent } from 'src/app/feature-modules/administration/movie-projections/movie-projections.component';
+import { MovieProjectionComponent } from 'src/app/feature-modules/administration/movie-projection/movie-projection.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'movies/:id',
     component: MovieProjectionsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'projection/:id',
+    component: MovieProjectionComponent,
     canActivate: [AuthGuard],
   },
 ];

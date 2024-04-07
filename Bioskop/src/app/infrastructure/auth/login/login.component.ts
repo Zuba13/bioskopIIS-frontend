@@ -13,14 +13,14 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    email: new FormControl(' ', [Validators.required, Validators.email]),
+    password: new FormControl(' ', [Validators.required]),
   });
 
   login(): void {
     const login: Login = {
-      username: this.loginForm.value.username || '',
-      password: this.loginForm.value.password || '',
+      email: this.loginForm.value.email || ' ',
+      password: this.loginForm.value.password || ' ',
     };
 
     if (this.loginForm.valid) {
@@ -30,5 +30,9 @@ export class LoginComponent {
         },
       });
     }
+  }
+
+  navigateToRegisterPage(): void {
+    this.router.navigate(['/register']);
   }
 }

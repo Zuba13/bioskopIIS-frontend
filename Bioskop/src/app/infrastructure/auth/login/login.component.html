@@ -1,29 +1,41 @@
-<div class="login-container">
-  <img
-    src="https://assets.nflxext.com/ffe/siteui/login/images/Netflix_Logo_RGB.png"
-    alt="Netflix Logo"
-    class="netflix-logo"
-  />
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <mat-form-field>
-      <input
-        matInput
-        formControlName="username"
-        type="text"
-        placeholder="Email or phone number"
-      />
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        formControlName="password"
-        type="password"
-        placeholder="Password"
-      />
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Sign In</button>
-  </form>
-  <div class="signup-link">
-    New to Netflix? <a routerLink="/register">Sign up now.</a>
+<div
+  class="background"
+  [style.backgroundImage]="
+    'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
+  "
+></div>
+
+<div class="no-scroll">
+  <div class="login-container">
+    <h2 class="title">Sign In</h2>
+    <form>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="email"
+          id="emailInput"
+          placeholder="Email"
+          onblur="validateEmail()"
+        />
+        <div class="error-message" id="emailErrorMessage"></div>
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="password"
+          id="passwordInput"
+          placeholder="Password"
+          onblur="validatePassword()"
+        />
+        <div class="error-message" id="passwordErrorMessage"></div>
+      </div>
+      <button class="btn btn-primary" type="button" onclick="login()">
+        Sign In
+      </button>
+    </form>
+    <div class="signup-link">
+      New to IIS Cinema?
+      <span onclick="navigateToRegisterPage()">Sign up now.</span>
+    </div>
   </div>
 </div>
