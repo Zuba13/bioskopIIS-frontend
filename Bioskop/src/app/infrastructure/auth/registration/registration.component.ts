@@ -8,6 +8,7 @@ import {
 import { Registration } from '../model/registration.model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { AuthenticationResponse } from '../model/authentication-response.model';
 
 @Component({
   selector: 'xp-registration',
@@ -23,7 +24,11 @@ export class RegistrationComponent {
   password: FormControl;
   confirmPassword: FormControl;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.createFormControls();
     this.createForm();
   }
@@ -64,8 +69,23 @@ export class RegistrationComponent {
   }
 
   register(): void {
-    console.log('registracija');
     if (this.registrationForm.valid) {
+      const registration: Registration = {
+        firstName: this.registrationForm.value.firstName,
+        lastName: this.registrationForm.value.lastName,
+        email: this.registrationForm.value.email,
+        username: this.registrationForm.value.username,
+        password: this.registrationForm.value.password,
+      };
+
+      this.authService.register(registration).subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          console.error('Registration failed:', error);
+        },
+      });
     }
   }
 

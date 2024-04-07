@@ -8,28 +8,27 @@
 <div class="no-scroll">
   <div class="login-container">
     <h2 class="title">Sign In</h2>
-    <form>
+    <form [formGroup]="loginForm">
       <div class="form-group">
         <input
           class="form-control"
-          type="email"
-          id="emailInput"
-          placeholder="Email"
-          onblur="validateEmail()"
+          formControlName="username"
+          id="usernameInput"
+          placeholder="Username"
         />
         <div class="error-message" id="emailErrorMessage"></div>
       </div>
       <div class="form-group">
         <input
           class="form-control"
+          formControlName="password"
           type="password"
           id="passwordInput"
           placeholder="Password"
-          onblur="validatePassword()"
         />
         <div class="error-message" id="passwordErrorMessage"></div>
       </div>
-      <button class="btn btn-primary" type="button" onclick="login()">
+      <button class="btn btn-primary" type="button" (click)="login()">
         Sign In
       </button>
     </form>

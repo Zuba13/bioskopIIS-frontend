@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../model/login.model';
@@ -9,13 +14,21 @@ import { Login } from '../model/login.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+export class LoginComponent implements OnInit {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  loginForm = new FormGroup({
-    email: new FormControl(' ', [Validators.required, Validators.email]),
-    password: new FormControl(' ', [Validators.required]),
-  });
+  loginForm: FormGroup;
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   navigateToRegisterPage(): void {
     console.log('rutiranje');
@@ -23,17 +36,20 @@ export class LoginComponent {
   }
 
   login(): void {
-    const login: Login = {
-      email: this.loginForm.value.email || ' ',
-      password: this.loginForm.value.password || ' ',
-    };
-
     if (this.loginForm.valid) {
-      this.authService.login(login).subscribe({
-        next: () => {
-          this.router.navigate(['/']);
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
+
+      this.authService.login({ username, password }).subscribe(
+        (response) => {
+          this.router.navigate(['/home']);
         },
-      });
+        (error) => {
+          console.error('Login failed:', error);
+        }
+      );
+    } else {
+      console.log('Invalid form');
     }
   }
 }
