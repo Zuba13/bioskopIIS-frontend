@@ -51,13 +51,31 @@
   margin-right: 0;
 }
 
+.selection-container {
+  display: flex;
+  width: 1550px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
 .hall-layout {
+  padding-top: 16px;
+  padding-bottom: 16px;
   margin-top: 32px;
   display: flex; /* Use flexbox to layout rows horizontally */
   flex-direction: column; /* Arrange rows vertically */
-  margin-left: auto;
-  margin-right: auto;
+
   max-width: 1200px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding-left: 24px;
+  padding-right: 24px;
+  justify-self: left;
 }
 
 .hall-row-container {
@@ -68,7 +86,36 @@
 .hall-row {
   margin-bottom: 10px; /* Add some space between rows */
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
+  max-height: 6vh;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.legend-row {
+  margin-bottom: 10px; /* Add some space between rows */
+  display: flex;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.legend-row img {
+  max-height: 40px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.legend-row span {
+  margin-right: 10px; /* Add spacing between legend items */
+  display: inline-block; /* Ensure each item is on a separate line */
+  font-size: 14px; /* Adjust font size as needed */
+  font-weight: bold; /* Make the text bold */
+  color: white; /* Set the text color */
+  font-weight: 500;
+  margin-left: 8px;
+  margin-right: 32px;
 }
 
 .row-number {
@@ -81,6 +128,7 @@
 .seat {
   position: relative; /* Position seat number relative to the seat */
   cursor: pointer;
+  margin-right: 4px;
 }
 
 .seat-number {
@@ -158,4 +206,225 @@
 
 .no-seats-selected p {
   margin: 0;
+}
+
+.booking-details-wrapper {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  display: flex;
+  max-width: 27%;
+  max-height: 60vh;
+  align-self: center;
+}
+
+.booking-details {
+  background-color: transparent;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  padding: 32px;
+}
+
+.movie-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.movie-info {
+  display: flex;
+  text-align: left;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  margin-bottom: 32px;
+}
+
+.cinema-name {
+  color: #e50914;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  font-family: "Netflix Sans", Arial, sans-serif;
+}
+
+.movie-info-text {
+  color: white;
+  font-size: 18px;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.movie-image {
+  flex: 1;
+  max-width: 40%;
+}
+
+.movie-image img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.movie-description {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.regular-ticket {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  text-align: left;
+  font-size: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 500;
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.ticket-info,
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.border-btm-line {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.total-price img {
+  max-height: 40px;
+}
+
+.total-price-inner {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  text-align: left;
+  font-size: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.proceed-button {
+  margin-top: 16px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.proceed-button:hover {
+  background-color: #ff3d00;
+}
+
+/* Parent component CSS */
+.modal {
+  position: fixed;
+  z-index: 5000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 24px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 20%;
+  height: auto; /* Adjust height to fit content */
+  color: white;
+  text-align: center;
+  border: 2px solid rgba(229, 9, 20, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.close {
+  color: #e50914;
+  float: right;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #e50914;
+  opacity: 0.8;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.confirm-purchase {
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.modal-content p {
+  font-size: 16px;
+}
+
+.confirm-button,
+.cancel-button {
+  margin-top: 16px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 40%;
+}
+
+.confirm-button {
+  background-color: #e50914;
+  color: white;
+  margin-right: 8px;
+}
+
+.cancel-button {
+  background-color: #333;
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: #ff3d00;
+}
+
+.cancel-button:hover {
+  background-color: rgba(51, 51, 51, 0.8); /* Adjust the opacity to darken */
+}
+
+.disabled-button {
+  opacity: 0.5; /* Decrease opacity to indicate disabled state */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+  /* Add any other styles to visually indicate disabled state */
+}
+
+.disabled-button:hover {
+  /* Remove hover animations */
+  pointer-events: none; /* Disable pointer events on hover */
+  /* Add any other styles to prevent hover effect */
 }

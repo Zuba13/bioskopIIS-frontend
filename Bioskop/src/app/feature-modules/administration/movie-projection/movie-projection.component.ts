@@ -18,6 +18,9 @@ export class MovieProjectionComponent implements OnInit {
   hallNumberOfRowsArray: any[];
   hallSeatsPerRowArray: any[];
   selectedSeats: boolean[][];
+  isModalOpen: boolean = false;
+
+  // Set the maximum height for hall-layout based on screen height
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +52,25 @@ export class MovieProjectionComponent implements OnInit {
             this.movie = movie;
           });
       });
+  }
+
+  buyTickets(): void {
+    // Show the modal
+    this.isModalOpen = true;
+  }
+
+  // Method to handle the modal's confirmation event
+  onConfirmation(confirm: boolean): void {
+    if (confirm) {
+      // User confirmed the purchase
+      // Proceed with the purchase logic
+      console.log('Tickets purchased!');
+    } else {
+      // User cancelled the purchase
+      console.log('Purchase cancelled.');
+    }
+    // Close the modal
+    this.isModalOpen = false;
   }
 
   initializeSeatArrays(): void {
@@ -83,5 +105,19 @@ export class MovieProjectionComponent implements OnInit {
 
   calculateTotalPrice(): number {
     return this.countSelectedSeats() * this.projection.price;
+  }
+
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
+
+  confirmPurchase(): void {
+    // Perform purchase logic
+    console.log('Purchase confirmed!');
+    this.closeModal(); // Close the modal after confirmation
   }
 }

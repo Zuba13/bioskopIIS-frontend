@@ -1,27 +1,69 @@
-<form [formGroup]="registrationForm" (ngSubmit)="register()">
-    <div>
-        <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" type="text"/>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Surname</mat-label>
-            <input matInput formControlName="surname" type="text"/>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="username" type="text"/>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="text"/>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password"/>
-        </mat-form-field>
-    <button color="primary" type="submit" mat-raised-button>Register</button>
+<div
+  class="background"
+  [style.backgroundImage]="
+    'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
+  "
+></div>
+
+<div class="no-scroll">
+  <div class="registration-container">
+    <h2 class="title">Sign Up</h2>
+    <form>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="text"
+          id="firstNameInput"
+          placeholder="First Name"
+          onblur="validateFirstName()"
+        />
+        <input
+          class="form-control"
+          type="text"
+          id="lastNameInput"
+          placeholder="Last Name"
+          onblur="validateLastName()"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="text"
+          id="usernameInput"
+          placeholder="Username"
+          onblur="validateUsername()"
+        />
+        <input
+          class="form-control"
+          type="email"
+          id="emailInput"
+          placeholder="Email"
+          onblur="validateEmail()"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="password"
+          id="passwordInput"
+          placeholder="Password"
+          onblur="validatePassword()"
+        />
+        <input
+          class="form-control"
+          type="password"
+          id="confirmPasswordInput"
+          placeholder="Confirm Password"
+          onblur="validateConfirmPassword()"
+        />
+      </div>
+      <button class="btn btn-primary" type="button" onclick="register()">
+        Sign Up
+      </button>
+    </form>
+    <div class="signin-link">
+      Already have an account?
+      <span onclick="navigateToLoginPage()">Sign in here.</span>
     </div>
-</form>
-
-
+  </div>
+</div>
