@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   loginForm: FormGroup;
+  badCreds: boolean = false;
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    this.badCreds = false;
     if (this.loginForm.valid) {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           console.error('Login failed:', error);
+          this.badCreds = true;
         }
       );
     } else {

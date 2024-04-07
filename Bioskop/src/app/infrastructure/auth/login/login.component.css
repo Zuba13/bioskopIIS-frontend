@@ -41,9 +41,17 @@
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   margin-left: 0;
   margin-right: 34px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0px;
+}
+
+.bot-gap {
+  margin-bottom: 20px;
 }
 
 .form-control {
@@ -75,6 +83,7 @@
   margin: 0;
   color: #fff;
   font-weight: 500;
+  margin-top: 20px;
 }
 
 .btn-primary:hover {
@@ -96,4 +105,21 @@
 .signup-link span:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.error-message {
+  margin: 0;
+  padding: 0;
+  color: #e50914;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  font-weight: 600;
 }

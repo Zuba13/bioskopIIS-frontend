@@ -11,12 +11,11 @@
     <form [formGroup]="loginForm">
       <div class="form-group">
         <input
-          class="form-control"
+          class="form-control bot-gap"
           formControlName="username"
           id="usernameInput"
           placeholder="Username"
         />
-        <div class="error-message" id="emailErrorMessage"></div>
       </div>
       <div class="form-group">
         <input
@@ -26,7 +25,16 @@
           id="passwordInput"
           placeholder="Password"
         />
-        <div class="error-message" id="passwordErrorMessage"></div>
+      </div>
+      <div class="error-container">
+        <i
+          *ngIf="badCreds"
+          class="fas fa-times-circle"
+          style="color: #e50914"
+        ></i>
+        <div *ngIf="badCreds" class="error-message">
+          Invalid username or password.
+        </div>
       </div>
       <button class="btn btn-primary" type="button" (click)="login()">
         Sign In
