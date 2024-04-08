@@ -1,0 +1,39 @@
+<div
+  *ngIf="movie"
+  class="background"
+  [style.backgroundImage]="'url(' + movie.image + ')'"
+></div>
+
+<div class="movie-details">
+  <h1>{{ movie.title }} ({{ movie.year }})</h1>
+  <p class="genres">{{ movie.genre }}</p>
+
+  <div
+    *ngIf="projections && projections.length > 0"
+    class="projections-container"
+  >
+    <!-- Group projections by date -->
+    <div
+      *ngFor="let group of groupProjectionsByDate(projections)"
+      class="projection-group"
+    >
+      <div class="date-row">
+        <i class="far fa-calendar-alt"></i>
+        <p class="date">{{ group.date | date : "MMM d" }}</p>
+      </div>
+
+      <!-- Display projections for the current date -->
+      <div class="projection-items">
+        <div
+          *ngFor="let projection of group.projections"
+          class="projection-item"
+          (click)="navigateToProjectionDetails(projection.id)"
+        >
+          <p class="hall">HALL {{ projection.hallId }}</p>
+          <p class="time">{{ projection.time }}</p>
+          <!-- Add other projection details here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,22 @@
-<mat-toolbar color="primary">
-    <div>
-        <p>Explorer</p>
-        <div id="buttons">
-            <button *ngIf="user && user.username === ''" color="accent" mat-raised-button [routerLink]="['login']">Login</button>
-            <button *ngIf="user && user.username !== ''" color="accent" mat-raised-button (click)="onLogout()">Logout</button>
-            <button color="primary" mat-raised-button [routerLink]="['home']">Home</button>
-            <button *ngIf="user && user.role === 'administrator'"color="primary" mat-raised-button [routerLink]="['equipment']">Manage equipment</button>
-        </div>
-    </div>
-</mat-toolbar>
+<nav class="navbar">
+  <div class="left-part">
+    <a href="#" class="logo">IIS Cinema</a>
+    <ul class="nav-links">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/movie-list">Movies</a></li>
+    </ul>
+  </div>
+  <div class="icons">
+    <ng-container *ngIf="user?.id !== 0; else loginRegister">
+      <i class="material-icons">notifications</i>
+      <i class="material-icons">account_circle</i>
+      <span class="welcome">Welcome, {{ user?.firstName }}</span>
+      <button class="login-btn" (click)="onLogout()">Logout</button>
+    </ng-container>
+    <ng-template #loginRegister>
+      <ul class="nav-links">
+        <li><a class="login-btn" routerLink="/login">Sign In</a></li>
+      </ul>
+    </ng-template>
+  </div>
+</nav>

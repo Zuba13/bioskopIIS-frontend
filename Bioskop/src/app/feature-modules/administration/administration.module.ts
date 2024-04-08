@@ -1,25 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EquipmentFormComponent } from './equipment-form/equipment-form.component';
-import { EquipmentComponent } from './equipment/equipment.component';
 import { MaterialModule } from 'src/app/infrastructure/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { MovieProjectionsComponent } from './movie-projections/movie-projections.component';
+import { MovieProjectionComponent } from './movie-projection/movie-projection.component';
 
 @NgModule({
-  declarations: [
-    EquipmentFormComponent,
-    EquipmentComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    EquipmentComponent,
-    EquipmentFormComponent
-  ]
+  declarations: [MovieListComponent, MovieProjectionsComponent, MovieProjectionComponent],
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule],
+  exports: [MovieListComponent],
 })
-export class AdministrationModule { }
+export class AdministrationModule {}

@@ -1,16 +1,55 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div>
-        <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="username" type="text"/>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password"/>
-        </mat-form-field>
-    <button color="primary" type="submit" mat-raised-button>Login</button>
-    <p>Don't have an account yet?<a href="/register">Sign Up</a></p>
+<div
+  class="background"
+  [style.backgroundImage]="
+    'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
+  "
+></div>
+
+<div class="no-scroll">
+  <div class="login-container">
+    <h2 class="title">Sign In</h2>
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <input
+          class="form-control bot-gap"
+          formControlName="username"
+          id="usernameInput"
+          placeholder="Username"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          formControlName="password"
+          type="password"
+          id="passwordInput"
+          placeholder="Password"
+        />
+      </div>
+      <div class="error-container">
+        <i
+          *ngIf="badCreds"
+          class="fas fa-times-circle"
+          style="color: #e50914"
+        ></i>
+        <div *ngIf="badCreds" class="error-message">
+          Invalid username or password.
+        </div>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="button"
+        [disabled]="loginForm.invalid || isFieldEmpty()"
+        [style.opacity]="loginForm.invalid || isFieldEmpty() ? '0.5' : '1'"
+        [ngClass]="{ 'disabled-cursor': isFieldEmpty() }"
+        (click)="login()"
+      >
+        Sign In
+      </button>
+    </form>
+    <div class="signup-link">
+      New to IIS Cinema?
+      <span (click)="navigateToRegisterPage()">Sign up now.</span>
     </div>
-</form>
-
-
+  </div>
+</div>
