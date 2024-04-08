@@ -5,6 +5,7 @@ import { environment } from 'src/env/environment';
 import { Observable } from 'rxjs';
 import { Projection } from './model/projection.model';
 import { Hall } from './model/hall.model';
+import { Ticket } from './model/ticket.model';
 
 @Injectable({
   providedIn: 'root',
@@ -50,5 +51,20 @@ export class MovieService {
   getHallById(hallId: number): Observable<Hall> {
     const url = `${environment.apiHost}halls/${hallId}`;
     return this.http.get<Hall>(url);
+  }
+
+  createTicket(ticket: Ticket): Observable<Ticket> {
+    const url = `${environment.apiHost}tickets`;
+    return this.http.post<Ticket>(url, ticket);
+  }
+
+  getTicketsByUserId(userId: number): Observable<Ticket[]> {
+    const url = `${environment.apiHost}tickets/user/${userId}`;
+    return this.http.get<Ticket[]>(url);
+  }
+
+  getTicketsByProjectionId(projectionId: number): Observable<Ticket[]> {
+    const url = `${environment.apiHost}tickets/projection/${projectionId}`;
+    return this.http.get<Ticket[]>(url);
   }
 }

@@ -428,3 +428,7 @@
   pointer-events: none; /* Disable pointer events on hover */
   /* Add any other styles to prevent hover effect */
 }
+
+.seat.reserved {
+  cursor: not-allowed; /* Change cursor to "not-allowed" */
+}

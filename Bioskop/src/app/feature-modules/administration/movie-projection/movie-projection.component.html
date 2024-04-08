@@ -21,12 +21,15 @@
           class="seat"
           *ngFor="let seat of hallSeatsPerRowArray; let j = index"
           (click)="toggleSeatSelection(i, j)"
+          [class.reserved]="isSeatReserved(i, j)"
         >
           <!-- Use selectedChair.png if the seat is selected, otherwise use chair.png -->
           <img
             [src]="
               isSeatSelected(i, j)
                 ? 'assets/selectedChair.png'
+                : isSeatReserved(i, j)
+                ? 'assets/reservedChair.png'
                 : 'assets/chair.png'
             "
             alt="Cinema Seat"
@@ -89,6 +92,7 @@
         class="proceed-button"
         [class.disabled-button]="countSelectedSeats() === 0"
         [disabled]="countSelectedSeats() === 0"
+        (click)="openModal()"
       >
         Buy Tickets
       </button>
