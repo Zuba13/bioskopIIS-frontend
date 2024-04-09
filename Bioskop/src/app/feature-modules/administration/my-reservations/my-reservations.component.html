@@ -1,0 +1,93 @@
+<div
+  class="background"
+  [style.backgroundImage]="
+    'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
+  "
+></div>
+
+<div class="my-reservations">
+  <div class="reservation-tabs">
+    <button
+      (click)="activeTab = 'upcoming'"
+      [class.active]="activeTab === 'upcoming'"
+    >
+      Upcoming Tickets
+    </button>
+    <button (click)="activeTab = 'past'" [class.active]="activeTab === 'past'">
+      Past Tickets
+    </button>
+  </div>
+  <!-- Upcoming Tickets -->
+  <div *ngIf="upcomingTickets.length > 0">
+    <div
+      *ngIf="activeTab === 'upcoming' && upcomingTickets.length > 0"
+      class="reservation-cards"
+    >
+      <div *ngFor="let ticket of upcomingTickets" class="reservation-card">
+        <img
+          [src]="ticket.projection?.movie?.image"
+          alt="Movie Poster"
+          class="movie-poster"
+        />
+        <div class="reservation-details">
+          <h3>
+            {{ ticket.projection?.movie?.title }} ({{
+              ticket.projection?.movie?.year
+            }})
+          </h3>
+          <p>
+            <span>Projection Date:</span>
+            {{ ticket.projection?.date | date : "mediumDate" }}
+          </p>
+          <p><span>Time:</span> {{ ticket.projection?.time }}</p>
+          <p>
+            <span>Row:</span> {{ ticket?.rowNum }}
+            <span class="special-span">Seat:</span>
+            {{ ticket.seatNum }}
+          </p>
+          <p><span>Price:</span> ${{ ticket.projection?.price }}</p>
+          <button class="cancel-button">Cancel Ticket</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Past Tickets -->
+  <div *ngIf="pastTickets.length > 0">
+    <div
+      *ngIf="activeTab === 'past' && pastTickets.length > 0"
+      class="reservation-cards"
+    >
+      <div *ngFor="let ticket of pastTickets" class="reservation-card">
+        <img
+          [src]="ticket.projection?.movie?.image"
+          alt="Movie Poster"
+          class="movie-poster"
+        />
+        <div class="reservation-details">
+          <h3>
+            {{ ticket.projection?.movie?.title }} ({{
+              ticket.projection?.movie?.year
+            }})
+          </h3>
+          <p>
+            <span>Projection Date:</span>
+            {{ ticket.projection?.date | date : "mediumDate" }}
+          </p>
+          <p><span>Time:</span> {{ ticket.projection?.time }}</p>
+          <p>
+            <span>Row:</span> {{ ticket?.rowNum }}
+            <span class="special-span">Seat:</span>
+            {{ ticket.seatNum }}
+          </p>
+          <p><span>Price:</span> ${{ ticket.projection?.price }}</p>
+          <button class="cancel-button">Rate Movie</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="tickets.length === 0" class="no-reservations">
+    <p>No reservations found.</p>
+  </div>
+</div>

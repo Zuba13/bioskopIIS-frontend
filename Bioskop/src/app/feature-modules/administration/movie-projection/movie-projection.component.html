@@ -3,110 +3,126 @@
   class="background"
   [style.backgroundImage]="'url(' + movie.image + ')'"
 ></div>
+<div class="no-scroll">
+  <div class="selection-container">
+    <div class="hall-layout">
+      <!-- Outer container for all rows -->
+      <div
+        *ngFor="let row of hallNumberOfRowsArray; let i = index"
+        class="hall-row-container"
+      >
+        <!-- Individual row -->
+        <div class="hall-row">
+          <!-- Display row number on the left side -->
+          <div class="row-number">ROW {{ i + 1 }}</div>
 
-<div class="selection-container">
-  <div class="hall-layout">
-    <!-- Outer container for all rows -->
-    <div
-      *ngFor="let row of hallNumberOfRowsArray; let i = index"
-      class="hall-row-container"
-    >
-      <!-- Individual row -->
-      <div class="hall-row">
-        <!-- Display row number on the left side -->
-        <div class="row-number">ROW {{ i + 1 }}</div>
+          <!-- Seats for the current row -->
+          <div
+            class="seat"
+            *ngFor="let seat of hallSeatsPerRowArray; let j = index"
+            (click)="toggleSeatSelection(i, j)"
+            [class.reserved]="isSeatReserved(i, j)"
+          >
+            <!-- Use selectedChair.png if the seat is selected, otherwise use chair.png -->
+            <img
+              [src]="
+                isSeatSelected(i, j)
+                  ? 'assets/selectedChair.png'
+                  : isSeatReserved(i, j)
+                  ? 'assets/reservedChair.png'
+                  : 'assets/chair.png'
+              "
+              alt="Cinema Seat"
+            />
 
-        <!-- Seats for the current row -->
-        <div
-          class="seat"
-          *ngFor="let seat of hallSeatsPerRowArray; let j = index"
-          (click)="toggleSeatSelection(i, j)"
-          [class.reserved]="isSeatReserved(i, j)"
-        >
-          <!-- Use selectedChair.png if the seat is selected, otherwise use chair.png -->
-          <img
-            [src]="
-              isSeatSelected(i, j)
-                ? 'assets/selectedChair.png'
-                : isSeatReserved(i, j)
-                ? 'assets/reservedChair.png'
-                : 'assets/chair.png'
-            "
-            alt="Cinema Seat"
-          />
-
-          <!-- Display seat number on each seat -->
-          <div class="seat-number">
-            {{ i * hallSeatsPerRowArray.length + j + 1 - i * hall.seatsPerRow }}
+            <!-- Display seat number on each seat -->
+            <div class="seat-number">
+              {{
+                i * hallSeatsPerRowArray.length + j + 1 - i * hall.seatsPerRow
+              }}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="legend-row">
-      <div class="legend-item">
-        <img src="assets/chair.png" alt="Free Seat" />
-        <span>Free Seat</span>
-      </div>
-      <div class="legend-item">
-        <img src="assets/selectedChair.png" alt="Selected Seat" />
-        <span>Selected Seat</span>
-      </div>
-      <div class="legend-item">
-        <img src="assets/reservedChair.png" alt="Occupied Seat" />
-        <span>Occupied Seat</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="booking-details-wrapper">
-    <div class="booking-details">
-      <div class="movie-title">{{ movie.title }} ({{ movie.year }})</div>
-      <div class="movie-info">
-        <div class="movie-image">
-          <img [src]="movie.image" alt="{{ movie.title }}" />
+      <div class="legend-row">
+        <div class="legend-item">
+          <img src="assets/chair.png" alt="Free Seat" />
+          <span>Free Seat</span>
         </div>
-        <div class="movie-description">
-          <p class="cinema-name">IIS Cinema</p>
-          <p class="movie-info-text">
-            {{ projection.date | date : "dd. MMMM, HH:mm" }}
+        <div class="legend-item">
+          <img src="assets/selectedChair.png" alt="Selected Seat" />
+          <span>Selected Seat</span>
+        </div>
+        <div class="legend-item">
+          <img src="assets/reservedChair.png" alt="Occupied Seat" />
+          <span>Occupied Seat</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-details-wrapper">
+      <div class="booking-details">
+        <div class="movie-title">{{ movie.title }} ({{ movie.year }})</div>
+        <div class="movie-info">
+          <div class="movie-image">
+            <img [src]="movie.image" alt="{{ movie.title }}" />
+          </div>
+          <div class="movie-description">
+            <p class="cinema-name">IIS Cinema</p>
+            <p class="movie-info-text">
+              {{ projection.date | date : "dd. MMMM, HH:mm" }}
+            </p>
+            <p class="movie-info-text">Hall {{ hall.id }}</p>
+          </div>
+        </div>
+        <div class="ticket-info">
+          <p class="regular-ticket">
+            <span> Regular ticket </span>
+            <span
+              >{{ countSelectedSeats() }} x {{ projection.price | currency }}
+            </span>
           </p>
-          <p class="movie-info-text">Hall {{ hall.id }}</p>
+        </div>
+        <div class="total-price border-btm-line">
+          <img src="assets/cart.png" alt="Shopping cart" />
+          <div class="total-price-inner">
+            <span>Total price: </span>
+            <span>{{ calculateTotalPrice() | currency }}</span>
+          </div>
+        </div>
+        <button
+          class="proceed-button"
+          [class.disabled-button]="
+            countSelectedSeats() === 0 || !hasEnoughMoney()
+          "
+          [class.enabled-button]="
+            countSelectedSeats() !== 0 && hasEnoughMoney()
+          "
+          [disabled]="countSelectedSeats() === 0 || !hasEnoughMoney()"
+          (click)="openModal()"
+        >
+          Buy Tickets
+        </button>
+        <div *ngIf="!hasEnoughMoney()" class="no-money">
+          Your account balance is too low to proceed.
+        </div>
+        <div *ngIf="countSelectedSeats() === 0" class="no-money">
+          Please select at least 1 seat to proceed.
         </div>
       </div>
-      <div class="ticket-info">
-        <p class="regular-ticket">
-          <span> Regular ticket </span>
-          <span
-            >{{ countSelectedSeats() }} x {{ projection.price | currency }}
-          </span>
-        </p>
-      </div>
-      <div class="total-price border-btm-line">
-        <img src="assets/cart.png" alt="Shopping cart" />
-        <div class="total-price-inner">
-          <span>Total price: </span>
-          <span>{{ calculateTotalPrice() | currency }}</span>
-        </div>
-      </div>
-      <button
-        class="proceed-button"
-        [class.disabled-button]="countSelectedSeats() === 0"
-        [disabled]="countSelectedSeats() === 0"
-        (click)="openModal()"
-      >
-        Buy Tickets
-      </button>
     </div>
   </div>
-</div>
 
-<div class="modal" *ngIf="isModalOpen">
-  <div class="modal-content">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <h2 class="confirm-purchase">Confirm Purchase</h2>
-    <!-- Display selected seats, movie details, total price, etc. -->
-    <p>Are you sure you want to buy the tickets?</p>
-    <button (click)="confirmPurchase()" class="confirm-button">Confirm</button>
-    <button (click)="closeModal()" class="cancel-button">Cancel</button>
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="confirm-purchase">Confirm Purchase</h2>
+      <!-- Display selected seats, movie details, total price, etc. -->
+      <p>Are you sure you want to buy the tickets?</p>
+      <button (click)="confirmPurchase()" class="confirm-button">
+        Confirm
+      </button>
+      <button (click)="closeModal()" class="cancel-button">Cancel</button>
+    </div>
   </div>
 </div>
