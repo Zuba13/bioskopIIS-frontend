@@ -21,7 +21,8 @@
 .movie-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 24px;
   margin-top: 2rem;
 }
 
@@ -81,4 +82,87 @@
 
 .get-tickets-btn:hover {
   background-color: #c80d13;
+}
+
+.tab {
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  transition: color 0.3s;
+  color: white;
+  font-weight: 600;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  color: #e50914; /* Netflix red color */
+  font-weight: bold;
+  border-bottom: 2px solid #e50914; /* Netflix red color */
+}
+
+/* Style the select element */
+.date-filter {
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 18px;
+  border: 2px solid white;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+  color: #fff; /* White text color */
+  width: 290px;
+  margin-right: 24px;
+  transition: all 0.3s ease;
+}
+
+.option-filter.filter-option {
+  background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+  color: #fff; /* White text color */
+  font-size: 16px;
+  height: 24px;
+  border: none; /* Remove default border */
+}
+
+/* Style the selected option */
+.date-filter option:checked {
+  background-color: #e50914; /* Netflix red background for selected option */
+  color: #fff; /* White text color */
+}
+
+.date-filter option:hover {
+  background-color: #e50914; /* Netflix red background for selected option */
+}
+
+/* Style the dropdown arrow */
+.date-filter::-ms-expand {
+  display: none; /* Hide the default arrow in IE */
+}
+
+/* Hover effect */
+.date-filter:hover {
+  border-color: #e50914; /* White border color on hover */
+}
+
+/* Focus effect */
+.date-filter:focus {
+  outline: none; /* Remove focus outline */
+  border-color: #fff; /* White border color on focus */
+}
+
+.down-arrow {
+  color: #fff; /* White arrow color */
+  height: 20px;
+  margin-left: -30px; /* Adjust position as needed */
 }

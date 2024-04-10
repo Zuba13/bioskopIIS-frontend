@@ -29,7 +29,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'myTickets',
+    path: 'my-tickets',
     component: MyReservationsComponent,
     canActivate: [AuthGuard],
   },

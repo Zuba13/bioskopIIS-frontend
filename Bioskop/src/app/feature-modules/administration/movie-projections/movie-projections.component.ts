@@ -31,7 +31,10 @@ export class MovieProjectionsComponent implements OnInit {
       this.movieService
         .getProjectionsForMovie(movieId)
         .subscribe((projections: any[]) => {
-          this.projections = projections;
+          this.projections = projections.filter((projection) => {
+            const projectionDate = new Date(projection.date);
+            return projectionDate > new Date();
+          });
         });
     });
   }
