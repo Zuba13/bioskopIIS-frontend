@@ -7,8 +7,8 @@ import { RegistrationComponent } from '../auth/registration/registration.compone
 import { MovieListComponent } from 'src/app/feature-modules/administration/movie-list/movie-list.component';
 import { MovieProjectionsComponent } from 'src/app/feature-modules/administration/movie-projections/movie-projections.component';
 import { MovieProjectionComponent } from 'src/app/feature-modules/administration/movie-projection/movie-projection.component';
+import { EditProfileComponent } from '../auth/edit-profile/edit-profile.component';
 import { MyReservationsComponent } from 'src/app/feature-modules/administration/my-reservations/my-reservations.component';
-
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -29,7 +29,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'my-tickets',
+    path: 'profile',
+    component: EditProfileComponent,
+  },
+  {
+    path: 'myTickets',
     component: MyReservationsComponent,
     canActivate: [AuthGuard],
   },
@@ -39,4 +43,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

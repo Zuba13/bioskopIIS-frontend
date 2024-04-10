@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   loginForm: FormGroup;
   badCreds: boolean = false;
@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToRegisterPage(): void {
-    console.log('rutiranje');
     this.router.navigate(['/register']);
   }
 
