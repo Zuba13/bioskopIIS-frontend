@@ -6,8 +6,35 @@
 ></div>
 
 <div class="container">
+  <select
+    class="date-filter"
+    [(ngModel)]="selectedDate"
+    (change)="filterMovies()"
+  >
+    <option class="filter-option" value="">All Dates</option>
+    <option
+      class="filter-option"
+      *ngFor="let date of dateOptions"
+      [value]="date"
+    >
+      {{ date }}
+    </option>
+    <img class="down-arrow" src="assets/down-arrow.png" alt="Down Arrow" />
+  </select>
+
+  <select
+    [(ngModel)]="selectedGenre"
+    (change)="filterMovies()"
+    class="date-filter"
+  >
+    <option class="filter-option" value="">All Genres</option>
+    <option class="filter-option" *ngFor="let genre of genres" [value]="genre">
+      {{ genre }}
+    </option>
+  </select>
+
   <div class="movie-list">
-    <div *ngFor="let movie of movies" class="movie-item">
+    <div *ngFor="let movie of filteredMovies" class="movie-item">
       <div class="movie-card">
         <img [src]="movie.image" alt="{{ movie.title }}" />
         <div class="movie-details">
