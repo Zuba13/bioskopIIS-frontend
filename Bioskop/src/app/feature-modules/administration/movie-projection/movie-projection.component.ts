@@ -23,6 +23,7 @@ export class MovieProjectionComponent implements OnInit {
   selectedSeats: boolean[][];
   isModalOpen: boolean = false;
   reservedSeats: boolean[][];
+  currentMoney: number;
 
   // Set the maximum height for hall-layout based on screen height
 
@@ -72,6 +73,11 @@ export class MovieProjectionComponent implements OnInit {
             // Handle error appropriately
           }
         );
+        this.authService
+          .getUserById(this.authService.user$.value.id)
+          .subscribe((user) => {
+            this.currentMoney = user.money;
+          });
       });
   }
 
@@ -143,6 +149,12 @@ export class MovieProjectionComponent implements OnInit {
 
   closeModal(): void {
     this.isModalOpen = false;
+  }
+
+  hasEnoughMoney(): boolean {
+    return (
+      this.currentMoney >= this.countSelectedSeats() * this.projection.price
+    );
   }
 
   confirmPurchase(): void {

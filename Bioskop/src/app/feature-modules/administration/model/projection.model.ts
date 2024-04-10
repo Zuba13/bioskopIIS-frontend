@@ -1,3 +1,5 @@
+import { Movie } from './movie.model';
+
 export interface Projection {
   id: number;
   movieId: number;
@@ -7,4 +9,5 @@ export interface Projection {
   time: string;
   createdAt: string; // Assuming the createdAt and updatedAt will be in ISO 8601 format
   updatedAt: string;
+  movie?: Movie;
 }

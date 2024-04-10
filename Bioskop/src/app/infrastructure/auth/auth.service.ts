@@ -28,7 +28,7 @@ export class AuthService {
     private http: HttpClient,
     private tokenStorage: TokenStorage,
     private router: Router
-  ) {}
+  ) { }
 
   login(login: Login): Observable<AuthenticationResponse> {
     console.log('USAO LOGIN');
@@ -45,6 +45,13 @@ export class AuthService {
   register(registration: Registration): Observable<User> {
     return this.http
       .post<User>(environment.apiHost + 'users/register', registration)
+      .pipe();
+  }
+
+  updateProfile(updateProfile: User, userId: number): Observable<User> {
+    console.log(userId, updateProfile);
+    return this.http
+      .put<User>(environment.apiHost + 'users/' + userId, updateProfile)
       .pipe();
   }
 

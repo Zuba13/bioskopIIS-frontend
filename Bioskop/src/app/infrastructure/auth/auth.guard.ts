@@ -12,19 +12,25 @@ import { User } from './model/user.model';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  user: User;
   constructor(
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) { }
+
 
   canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-        
-    const user: User = this.authService.user$.getValue();
-    if (user.username === '') {
+
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+      console.log(this.user);
+    });
+
+    if (this.user.username === '') {
       this.router.navigate(['login']);
       return false;
     }
