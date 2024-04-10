@@ -4,6 +4,7 @@
     <ul class="nav-links">
       <li><a routerLink="/home">Home</a></li>
       <li><a routerLink="/movie-list">Movies</a></li>
+      <li><a *ngIf="user?.id !== 0" routerLink="/myTickets">My Tickets</a></li>
     </ul>
   </div>
   <div class="icons">

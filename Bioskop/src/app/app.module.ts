@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './infrastructure/routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { JwtInterceptor } from './infrastructure/auth/jwt/jwt.interceptor';
     TourExecutionModule,
     AuthModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [
     {

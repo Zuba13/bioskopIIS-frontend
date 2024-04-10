@@ -1,3 +1,8 @@
+.no-scroll {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 .background {
   position: fixed;
   top: 0;
@@ -171,24 +176,6 @@
   margin-top: 20px;
 }
 
-.proceed-button {
-  padding: 15px 30px; /* Increase padding for larger button */
-  background-color: #e50914;
-  color: #fff;
-  border: none;
-  border-radius: 8px; /* Increase border radius for a rounder button */
-  font-size: 18px; /* Increase font size for larger text */
-  font-family: "Netflix Sans", Arial, sans-serif; /* Use Netflix's custom font */
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s; /* Add transform to the transition */
-}
-
-.proceed-button:hover {
-  background-color: #ff3d00;
-  transform: scale(1.01); /* Add scale effect on hover */
-}
-
 .no-seats-selected {
   margin-top: 20px;
   padding: 10px;
@@ -217,6 +204,8 @@
   max-width: 27%;
   max-height: 60vh;
   align-self: center;
+  padding-bottom: 36px;
+  border-radius: 16px;
 }
 
 .booking-details {
@@ -329,10 +318,6 @@
   width: 100%;
 }
 
-.proceed-button:hover {
-  background-color: #ff3d00;
-}
-
 /* Parent component CSS */
 .modal {
   position: fixed;
@@ -417,14 +402,43 @@
   background-color: rgba(51, 51, 51, 0.8); /* Adjust the opacity to darken */
 }
 
+.proceed-button {
+  padding: 15px 30px; /* Increase padding for larger button */
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* Increase border radius for a rounder button */
+  font-size: 18px; /* Increase font size for larger text */
+  font-family: "Netflix Sans", Arial, sans-serif; /* Use Netflix's custom font */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Add transform to the transition */
+}
+
+.enabled-button:hover {
+  cursor: pointer;
+  background-color: #ff3d00;
+}
+
 .disabled-button {
-  opacity: 0.5; /* Decrease opacity to indicate disabled state */
-  cursor: not-allowed; /* Change cursor to not-allowed */
-  /* Add any other styles to visually indicate disabled state */
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .disabled-button:hover {
-  /* Remove hover animations */
-  pointer-events: none; /* Disable pointer events on hover */
-  /* Add any other styles to prevent hover effect */
+  cursor: not-allowed;
+}
+
+.seat.reserved {
+  cursor: not-allowed; /* Change cursor to "not-allowed" */
+}
+
+.no-money {
+  color: #e50914;
+  font-size: 16px;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  text-align: left;
+  align-self: flex-start;
+  font-weight: 600;
+  margin-top: 4px;
 }
