@@ -1,0 +1,34 @@
+<div class="background" [style.backgroundImage]="
+    'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
+  "></div>
+
+<div class="no-scroll">
+    <div class="registration-container">
+        <h2 class="title">Edit Profile</h2>
+        <form [formGroup]="editProfileForm" (ngSubmit)="updateProfile()">
+            <div class="form-group">
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="firstName" type="text" id="firstNameInput"
+                        placeholder="First Name" value="{{ user.firstName }}" />
+                </div>
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="lastName" type="text" id="lastNameInput"
+                        placeholder="Last Name" value="{{ user.lastName }}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="username" type="text" id="usernameInput"
+                        placeholder="Username" value="{{ user.username }}" />
+                </div>
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="email" type="email" id="emailInput" placeholder="Email"
+                        value="{{ user.email }}" />
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="editProfileForm.invalid">
+                Update Profile
+            </button>
+        </form>
+    </div>
+</div>

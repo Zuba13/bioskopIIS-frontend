@@ -9,7 +9,7 @@
   <div class="icons">
     <ng-container *ngIf="user?.id !== 0; else loginRegister">
       <i class="material-icons">notifications</i>
-      <i class="material-icons">account_circle</i>
+      <i class="material-icons" (click)="onEditProfile()">account_circle</i>
       <span class="welcome">Welcome, {{ user?.firstName }}</span>
       <button class="login-btn" (click)="onLogout()">Logout</button>
     </ng-container>
