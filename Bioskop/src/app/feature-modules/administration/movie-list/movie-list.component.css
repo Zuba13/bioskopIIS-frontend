@@ -125,6 +125,7 @@
   width: 290px;
   margin-right: 24px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .option-filter.filter-option {
@@ -143,6 +144,7 @@
 
 .date-filter option:hover {
   background-color: #e50914; /* Netflix red background for selected option */
+  cursor: pointer;
 }
 
 /* Style the dropdown arrow */

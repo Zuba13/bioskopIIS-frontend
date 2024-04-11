@@ -33,7 +33,7 @@ const routes: Routes = [
     component: EditProfileComponent,
   },
   {
-    path: 'myTickets',
+    path: 'my-tickets',
     component: MyReservationsComponent,
     canActivate: [AuthGuard],
   },
@@ -43,4 +43,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

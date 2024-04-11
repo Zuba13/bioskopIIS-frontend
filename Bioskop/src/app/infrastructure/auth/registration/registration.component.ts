@@ -9,6 +9,7 @@ import { Registration } from '../model/registration.model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { AuthenticationResponse } from '../model/authentication-response.model';
+import { NotificationService } from 'src/app/feature-modules/administration/notification.service';
 
 @Component({
   selector: 'xp-registration',
@@ -27,7 +28,8 @@ export class RegistrationComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {
     this.createFormControls();
     this.createForm();
@@ -81,6 +83,9 @@ export class RegistrationComponent {
       this.authService.register(registration).subscribe({
         next: () => {
           this.router.navigate(['/home']);
+          this.notificationService.openSuccessSnackBar(
+            'User successfully registred. Please sign in in order to access your account.'
+          );
         },
         error: (error) => {
           console.error('Registration failed:', error);
