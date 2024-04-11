@@ -8,6 +8,7 @@ import {
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { Login } from '../model/login.model';
+import { NotificationService } from 'src/app/feature-modules/administration/notification.service';
 
 @Component({
   selector: 'xp-login',
@@ -18,8 +19,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService
+  ) {}
 
   loginForm: FormGroup;
   badCreds: boolean = false;
@@ -44,6 +46,9 @@ export class LoginComponent implements OnInit {
       this.authService.login({ username, password }).subscribe(
         (response) => {
           this.router.navigate(['/home']);
+          this.notificationService.openSuccessSnackBar(
+            `${username} successfully logged in.`
+          );
         },
         (error) => {
           console.error('Login failed:', error);

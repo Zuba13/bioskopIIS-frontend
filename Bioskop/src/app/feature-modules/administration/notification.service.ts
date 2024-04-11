@@ -12,7 +12,6 @@ export class NotificationService {
       duration: 3000,
       panelClass: ['success-snackbar', 'custom-snackbar'], // Add custom-snackbar class for styling
       horizontalPosition: 'end', // Align to the end (right) of the screen
-      verticalPosition: 'top', // Position at the top of the screen
     };
     this.snackBar.open(message, 'Close', config);
   }
