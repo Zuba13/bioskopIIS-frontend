@@ -9,6 +9,12 @@ import { MovieProjectionsComponent } from 'src/app/feature-modules/administratio
 import { MovieProjectionComponent } from 'src/app/feature-modules/administration/movie-projection/movie-projection.component';
 import { EditProfileComponent } from '../auth/edit-profile/edit-profile.component';
 import { MyReservationsComponent } from 'src/app/feature-modules/administration/my-reservations/my-reservations.component';
+import { SupplierRegistrationComponent } from 'src/app/feature-modules/food-beverage/supplier-registration/supplier-registration.component';
+import { SupplierContractComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/supplier-contract.component';
+import { BaseContractDataFormComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/base-contract-data-form/base-contract-data-form.component';
+import { ContractOverviewComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/contract-overview/contract-overview.component';
+import { ContractsTableComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/contracts-table/contracts-table.component';
+import { SuppliersTableComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/suppliers-table/suppliers-table.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -36,6 +42,26 @@ const routes: Routes = [
     path: 'my-tickets',
     component: MyReservationsComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'supplier-register',
+    component: SupplierRegistrationComponent,
+    // canActivate: [AuthGuard],
+  },
+  {
+    path: 'supplier-contract',
+    component: SupplierContractComponent,
+    // canActivate: [AuthGuard],
+  },
+  {
+    path: 'contracts',
+    component: ContractsTableComponent,
+    // canActivate: [AuthGuard],
+  },
+  {
+    path: 'suppliers',
+    component: SuppliersTableComponent,
+    // canActivate: [AuthGuard],
   },
 ];
 

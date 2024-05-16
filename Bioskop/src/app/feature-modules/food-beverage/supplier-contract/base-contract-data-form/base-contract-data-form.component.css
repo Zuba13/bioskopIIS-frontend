@@ -1,0 +1,60 @@
+.container {
+  width: 800px;
+  padding: 20px;
+  margin: auto;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  border-radius: 5px;
+  /* margin-top: 80px; */
+  font-family: "Netflix Sans", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 28px;
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  justify-content: flex-start;
+  margin-left: 16px;
+}
+
+.form-control {
+  width: 360px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.btn-primary {
+  width: 100%;
+  background-color: #e50914;
+  color: #fff; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Apply border radius */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add transition effect */
+  height: 50px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #ff3d00;
+}
+
+.disabled-button {
+  opacity: 0.6;
+  cursor: not-allowed; /* Change cursor to not-allowed */
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #e50914;
+  font-family: "Netflix Sans", Arial, sans-serif;
+  font-weight: 600;
+}

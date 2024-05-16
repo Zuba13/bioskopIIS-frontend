@@ -15,6 +15,8 @@ import { TourExecutionModule } from './feature-modules/tour-execution/tour-execu
 import { AuthModule } from './infrastructure/auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './infrastructure/auth/jwt/jwt.interceptor';
+import { SupplierRegistrationComponent } from './feature-modules/food-beverage/supplier-registration/supplier-registration.component';
+import { FoodBeverageModule } from './feature-modules/food-beverage/food-beverage.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +34,7 @@ import { JwtInterceptor } from './infrastructure/auth/jwt/jwt.interceptor';
     AuthModule,
     HttpClientModule,
     MatSnackBarModule,
+    FoodBeverageModule,
   ],
   providers: [
     {

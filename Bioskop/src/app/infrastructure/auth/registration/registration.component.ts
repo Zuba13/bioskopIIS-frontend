@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { AuthenticationResponse } from '../model/authentication-response.model';
 import { NotificationService } from 'src/app/feature-modules/administration/notification.service';
+import { User } from '../model/user.model';
 
 @Component({
   selector: 'xp-registration',
@@ -24,6 +25,7 @@ export class RegistrationComponent {
   email: FormControl;
   password: FormControl;
   confirmPassword: FormControl;
+  user: User | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -94,6 +96,29 @@ export class RegistrationComponent {
     }
   }
 
+  registerCashier(): void {
+    if (this.registrationForm.valid) {
+      const registration: Registration = {
+        firstName: this.registrationForm.value.firstName,
+        lastName: this.registrationForm.value.lastName,
+        email: this.registrationForm.value.email,
+        username: this.registrationForm.value.username,
+        password: this.registrationForm.value.password,
+      };
+
+      this.authService.registerCashier(registration).subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+          this.notificationService.openSuccessSnackBar(
+            'User successfully registred. Please sign in in order to access your account.'
+          );
+        },
+        error: (error) => {
+          console.error('Registration failed:', error);
+        },
+      });
+    }
+  }
   navigateToLoginPage(): void {
     this.router.navigate(['/login']);
   }
@@ -113,5 +138,12 @@ export class RegistrationComponent {
       confirmPasswordControl.setErrors(null);
       return;
     }
+  }
+
+  ngOnInit(): void {
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+      console.log(user);
+    });
   }
 }
