@@ -3,9 +3,12 @@
     <a href="#" class="logo">IIS Cinema</a>
     <ul class="nav-links">
       <li><a routerLink="/home">Home</a></li>
-      <li><a *ngIf="user?.id !== 0 && user?.role !== 'cashier'" routerLink="/movie-list">Movies</a></li>
+      <li><a *ngIf="user?.id !== 0 && user?.role === 'user'" routerLink="/movie-list">Movies</a></li>
       <li><a *ngIf="user?.id !== 0 && user?.role == 'user'" routerLink="/my-tickets">My Tickets</a></li>
       <li><a *ngIf="user?.role == 'admin'" routerLink="/register">Register Cashier</a></li>
+      <!-- <li><a *ngIf="user?.role == 'admin'" routerLink="/supplier-register">Register Supplier</a></li> -->
+      <li><a *ngIf="user?.role == 'admin'" routerLink="/contracts">Contracts</a></li>
+      <li><a *ngIf="user?.role == 'admin'" routerLink="/suppliers">Suppliers</a></li>
     </ul>
   </div>
   <div class="icons">

@@ -31,7 +31,6 @@ export class AuthService {
   ) {}
 
   login(login: Login): Observable<AuthenticationResponse> {
-    console.log('USAO LOGIN');
     return this.http
       .post<AuthenticationResponse>(environment.apiHost + 'users/login', login)
       .pipe(

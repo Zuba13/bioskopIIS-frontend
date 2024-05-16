@@ -1,0 +1,61 @@
+<div class="container">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="baseContractDataFormGroup">
+            <ng-template matStepLabel>Fill out base contract data</ng-template>
+            <xp-base-contract-data-form (onFormValueChanged)="handleBaseContractDataFormValueChange($event) "
+                [baseContract]="baseContractData" [suppliers]="suppliers"></xp-base-contract-data-form>
+            <div class="btn-container">
+                <button mat-button matStepperNext class="btn btn-primary btn-large btn-next" type="submit"
+                    [disabled]="baseContractDataFormGroup.invalid" [ngClass]="{
+                              'disabled-button':
+                                baseContractDataFormGroup.invalid 
+                            }">
+                    {{ 'Next' }}
+                </button>
+            </div>
+
+        </mat-step>
+        <mat-step [stepControl]="contractItemsFormGroup">
+            <ng-template matStepLabel>Fill out contract items</ng-template>
+
+            <xp-contract-items-form
+                (onFormValueChanged)="handleContractItemsFormValueChange($event) "></xp-contract-items-form>
+
+            <div class="btns-container">
+                <button mat-button matStepperPrevious class="btn btn-primary btn-small btn-back" type="submit"
+                    [disabled]="baseContractDataFormGroup.invalid" [ngClass]="{
+                                          'disabled-button':
+                                            baseContractDataFormGroup.invalid 
+                                        }">
+                    {{ 'Back' }}
+                </button>
+                <button mat-button matStepperNext class="btn btn-primary btn-small btn-next" type="submit"
+                    [disabled]="baseContractDataFormGroup.invalid" [ngClass]="{
+                                                          'disabled-button':
+                                                            baseContractDataFormGroup.invalid 
+                                                        }">
+                    {{ 'Next' }}
+                </button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Contract overview</ng-template>
+
+            <xp-contract-overview [baseContract]="baseContractData"
+                [contractItems]="contractItems"></xp-contract-overview>
+
+            <div class="btns-container">
+                <button mat-button matStepperPrevious class="btn btn-primary btn-small btn-back" type="submit"
+                    [disabled]="baseContractDataFormGroup.invalid" [ngClass]="{
+                                                                  'disabled-button':
+                                                                    baseContractDataFormGroup.invalid 
+                                                                }">
+                    {{ 'Back' }}
+                </button>
+                <button mat-button class="btn btn-primary btn-small btn-next" type="click" (click)="addContract()">
+                    {{ 'Submit' }}
+                </button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

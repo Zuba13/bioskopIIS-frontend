@@ -1,0 +1,32 @@
+.wrapper {
+  padding-top: 20px;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.btn-primary {
+  background-color: #e50914;
+  color: #fff; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Apply border radius */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add transition effect */
+  height: 50px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: auto;
+}
+
+.btn-large {
+  width: 80%;
+}
