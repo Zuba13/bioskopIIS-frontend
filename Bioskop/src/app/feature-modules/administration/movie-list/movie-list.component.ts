@@ -48,6 +48,10 @@ export class MovieListComponent implements OnInit {
     this.router.navigate(['/movies', movieId]);
   }
 
+  goToMovieReviews(movieId: number): void {
+    this.router.navigate(['/movie/reviews', movieId]);
+  }
+
   updateDateOptions(): void {
     // Initialize an array to store unique future dates
     const futureDates: string[] = [];

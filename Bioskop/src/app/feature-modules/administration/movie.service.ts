@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Projection } from './model/projection.model';
 import { Hall } from './model/hall.model';
 import { Ticket } from './model/ticket.model';
+import { Review } from './model/review.model';
 
 @Injectable({
   providedIn: 'root',
@@ -66,5 +67,20 @@ export class MovieService {
   getTicketsByProjectionId(projectionId: number): Observable<Ticket[]> {
     const url = `${environment.apiHost}tickets/projection/${projectionId}`;
     return this.http.get<Ticket[]>(url);
+  }
+
+  createReview(review: Review): Observable<Review> {
+    const url = `${environment.apiHost}reviews`;
+    return this.http.post<Review>(url, review);
+  }
+
+  getReviewsByMovieId(id: number): Observable<Review[]> {
+    const url = `${environment.apiHost}reviews/movie/${id}`;
+    return this.http.get<Review[]>(url);
+  }
+
+  getReviewsByUserId(id: number): Observable<Review[]> {
+    const url = `${environment.apiHost}reviews/user/${id}`;
+    return this.http.get<Review[]>(url);
   }
 }
