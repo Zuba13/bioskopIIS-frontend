@@ -1,0 +1,91 @@
+<div class="container">
+    <form [formGroup]="form">
+        <mat-grid-list cols="4" rowHeight="120px">
+            <ng-container formArrayName="contractItems" *ngFor="let contractItem of contractItems.controls; index as i">
+                <ng-container [formGroupName]="i">
+                    <!-- Name form control -->
+                    <mat-grid-tile>
+                        <mat-form-field class="form-control">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" type="text" id="name-input" />
+                            <mat-error
+                                *ngIf="contractItem?.get('name')?.invalid && (contractItem?.get('name')?.dirty || contractItem?.get('name')?.touched)">
+                                <div class="error-container">
+                                    <div class="error-icon">
+                                        <i class="fas fa-times-circle"></i>
+                                    </div>
+                                    <div>
+                                        <div *ngIf="contractItem?.get('name')?.errors?.['required']">
+                                            Name is required.
+                                        </div>
+                                        <div *ngIf="contractItem?.get('name')?.errors?.['minlength']">
+                                            Name should be at least 3 characters long.
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <!-- Quantity form control -->
+                    <mat-grid-tile>
+                        <mat-form-field class="form-control-number">
+                            <mat-label>Quantity</mat-label>
+                            <input matInput formControlName="quantity" type="number" id="quantity-input" min="1" />
+                            <mat-error
+                                *ngIf="contractItem?.get('quantity')?.invalid && (contractItem?.get('quantity')?.dirty || contractItem?.get('quantity')?.touched)">
+                                <div class="error-container">
+                                    <div class="error-icon">
+                                        <i class="fas fa-times-circle"></i>
+                                    </div>
+                                    <div>
+                                        <div *ngIf="contractItem?.get('quantity')?.errors?.['required']">
+                                            Quantity is required.
+                                        </div>
+                                        <div *ngIf="contractItem?.get('quantity')?.errors?.['min']">
+                                            Min value is 1
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <!-- Price form control -->
+                    <mat-grid-tile>
+                        <mat-form-field class="form-control-number">
+                            <mat-label>Price</mat-label>
+                            <input matInput formControlName="price" type="number" id="price-input" min="1" />
+                            <mat-error
+                                *ngIf="contractItem?.get('price')?.invalid && (contractItem?.get('price')?.dirty || contractItem?.get('price')?.touched)">
+                                <div class="error-container">
+                                    <div class="error-icon">
+                                        <i class="fas fa-times-circle"></i>
+                                    </div>
+                                    <div>
+                                        <div *ngIf="contractItem?.get('price')?.errors?.['required']">
+                                            Price is required.
+                                        </div>
+                                        <div *ngIf="contractItem?.get('price')?.errors?.['min']">
+                                            Min value is 1
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <div class="form-control-button">
+                            <button class=" btn-remove" type="button" (click)="removeContractItemField(i)">x</button>
+                        </div>
+                    </mat-grid-tile>
+
+                    <br><br>
+                </ng-container>
+            </ng-container>
+
+        </mat-grid-list>
+        <button class="btn-add" type="button" (click)="addContractItemField()">Add</button>
+    </form>
+</div>

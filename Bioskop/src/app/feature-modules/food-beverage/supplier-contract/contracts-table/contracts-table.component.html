@@ -1,0 +1,66 @@
+<div class="wrapper">
+    <div class="row-container">
+        <div>
+            <h2>Contracts</h2>
+        </div>
+        <div>
+            <button mat-button class="btn btn-primary btn-large btn-next" type="button" (click)="addContract()">
+                {{ 'Add contract' }}
+            </button>
+        </div>
+
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+        </ng-container>
+
+        <!-- Valid from Column -->
+        <ng-container matColumnDef="validFrom">
+            <th mat-header-cell *matHeaderCellDef> Valid from </th>
+            <td mat-cell *matCellDef="let element"> {{element.validFrom | date}} </td>
+        </ng-container>
+
+        <!-- Valid to Column -->
+        <ng-container matColumnDef="validUntil">
+            <th mat-header-cell *matHeaderCellDef> Valid to </th>
+            <td mat-cell *matCellDef="let element"> {{element.validUntil | date}} </td>
+        </ng-container>
+
+        <!-- Date of signature Column -->
+        <ng-container matColumnDef="dateOfSignature">
+            <th mat-header-cell *matHeaderCellDef> Date of signature </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateOfSignature | date}} </td>
+        </ng-container>
+
+        <!-- Contract type Column -->
+        <ng-container matColumnDef="contractType">
+            <th mat-header-cell *matHeaderCellDef>Contract type </th>
+            <td mat-cell *matCellDef="let element"> {{getContractType(element.ContractType)}} </td>
+        </ng-container>
+
+        <!-- Supplier name Column -->
+        <ng-container matColumnDef="supplierName">
+            <th mat-header-cell *matHeaderCellDef>Supplier </th>
+            <td mat-cell *matCellDef="let element"> {{element.Supplier.Name}} </td>
+        </ng-container>
+
+        <!-- Number of contract items -->
+        <ng-container matColumnDef="numberOfContractItems">
+            <th mat-header-cell *matHeaderCellDef>Contract items No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.ContractItems.length}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

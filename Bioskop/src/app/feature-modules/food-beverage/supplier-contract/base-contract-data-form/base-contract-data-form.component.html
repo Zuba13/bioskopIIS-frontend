@@ -1,0 +1,145 @@
+<div class="container">
+    <form [formGroup]="baseContractDataForm">
+        <mat-grid-list cols="2" rowHeight="120px">
+
+            <!-- Name form control -->
+            <mat-grid-tile>
+                <mat-form-field class="form-control">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" type="text" id="name-input" />
+                    <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <div class="error-container">
+                            <div class="error-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div>
+                                <div *ngIf="name.errors?.['required']">
+                                    Name is required.
+                                </div>
+                                <div *ngIf="name.errors?.['minlength']">
+                                    Name should be at least 3 characters long.
+                                </div>
+                            </div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- Date of signature form control  -->
+
+            <mat-grid-tile>
+                <mat-form-field class="form-control">
+                    <mat-label>Choose supplier</mat-label>
+                    <mat-select formControlName="supplier">
+                        <mat-option value="{{supplier.Id}}" *ngFor="let supplier of suppliers">{{supplier.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="supplier.invalid && (supplier.dirty || supplier.touched)">
+                        <div class="error-container">
+                            <div class="error-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div>
+                                Supplier is required.
+                            </div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- Valid from form control -->
+            <mat-grid-tile>
+
+                <mat-form-field class="form-control">
+                    <mat-label>Valid from</mat-label>
+                    <input formControlName="validFrom" id="validFromInput" matInput placeholder="Valid from"
+                        [matDatepicker]="validFromPicker" />
+
+                    <mat-datepicker-toggle matIconSuffix [for]="validFromPicker" color></mat-datepicker-toggle>
+                    <mat-datepicker #validFromPicker></mat-datepicker>
+
+                    <mat-error *ngIf="validFrom.invalid && (validFrom.dirty || validFrom.touched)">
+                        <div class="error-container">
+                            <div class="error-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div *ngIf="validFrom.errors?.['required']">
+                                Valid from date is required.
+                            </div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- Valid until form control -->
+            <mat-grid-tile>
+                <mat-form-field class="form-control">
+                    <mat-label>Valid until</mat-label>
+                    <input formControlName="validUntil" id="validUntilInput" matInput placeholder="Valid until"
+                        [matDatepicker]="picker" />
+
+                    <mat-datepicker-toggle matIconSuffix [for]="picker" color></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+
+                    <mat-error *ngIf="validUntil.invalid && (validUntil.dirty || validUntil.touched)">
+                        <div class="error-container">
+                            <div class="error-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div *ngIf="validUntil.errors?.['required']">
+                                Valid until date is required.
+                            </div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+
+            </mat-grid-tile>
+
+
+            <!-- Responsible person form control -->
+            <mat-grid-tile>
+                <mat-form-field class="form-control">
+                    <mat-label>Responsible person</mat-label>
+                    <input matInput formControlName="responsiblePerson" type="string" id="responsiblePersonInput" />
+
+                    <mat-error
+                        *ngIf="responsiblePerson.invalid && (responsiblePerson.dirty || responsiblePerson.touched)">
+                        <div class="error-container">
+                            <div class="error-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div *ngIf="responsiblePerson.errors?.['required']">
+                                Responsible person field is required.
+                            </div>
+                            <div *ngIf="responsiblePerson.errors?.['minlength']">
+                                Responsible should be at least 6 characters long.
+                            </div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-control">
+                    <mat-label>Choose contract type</mat-label>
+                    <mat-select formControlName="contractType">
+                        <mat-option value="0">Weekly</mat-option>
+                        <mat-option value="1">All at once</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="contractType.invalid && (contractType.dirty || contractType.touched)">
+                        <div class="error-container">
+                            <div class="error-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div>
+                                Contract type is required.
+                            </div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </form>
+</div>

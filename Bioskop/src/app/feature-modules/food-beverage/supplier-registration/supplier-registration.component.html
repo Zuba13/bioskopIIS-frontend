@@ -1,0 +1,130 @@
+<div class="container">
+    <form [formGroup]="supplierRegistrationForm" (ngSubmit)=" register()">
+        <mat-grid-list cols="2" rowHeight="100px">
+            <!-- <div class="form-group"> -->
+            <mat-grid-tile>
+                <div class="control-wrapper">
+                    <input class="form-control" formControlName="name" type="text" id="name-input" placeholder="Name" />
+                    <div [ngClass]="{'hidden' : !name.invalid || (!name.dirty && !name.touched)}"
+                        class="error-container">
+                        <div class="error-icon">
+                            <i class="fas fa-times-circle" style="color: #e50914"></i>
+                        </div>
+                        <div class="error-message">
+                            <div *ngIf="name.errors?.['required']">
+                                Name is required.
+                            </div>
+                            <div *ngIf="name.errors?.['minlength']">
+                                Name should be at least 3 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="control-wrapper">
+                    <input class="form-control" formControlName="email" type="email" id="emailInput"
+                        placeholder="Email" />
+                    <div [ngClass]="{'hidden' : !email.invalid || (!email.dirty && !email.touched)}"
+                        class="error-container">
+                        <div class="error-icon">
+                            <i class="fas fa-times-circle" style="color: #e50914"></i>
+                        </div>
+                        <div class="error-message">
+                            <div *ngIf="email.errors?.['required']">
+                                Email is required.
+                            </div>
+                            <div *ngIf="email.errors?.['minlength']">
+                                Email should be at least 3 characters long.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="control-wrapper">
+                    <input class="form-control" formControlName="street" type="street" id="streetInput"
+                        placeholder="Street" />
+                    <div [ngClass]="{'hidden' : !street.invalid || (!street.dirty && !street.touched)}"
+                        class="error-container">
+                        <div class="error-icon">
+                            <i class="fas fa-times-circle" style="color: #e50914"></i>
+                        </div>
+                        <div *ngIf="street.errors?.['required']" class="error-message">
+                            Street is required.
+                        </div>
+                        <div *ngIf="street.errors?.['street']" class="error-message">
+                            Street should be at least three characters long.
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="control-wrapper">
+                    <input class="form-control" formControlName="city" type="city" id="cityInput" placeholder="City" />
+                    <div [ngClass]="{'hidden' : !city.invalid || (!city.dirty && !city.touched)}"
+                        class="error-container">
+                        <div class="error-icon">
+                            <i class="fas fa-times-circle" style="color: #e50914"></i>
+                        </div>
+                        <div *ngIf="city.errors?.['required']" class="error-message">
+                            City is required.
+                        </div>
+                        <div *ngIf="city.errors?.['city']" class="error-message">
+                            City should be in the right format.
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+
+
+            <mat-grid-tile>
+                <div class="control-wrapper">
+                    <input class="form-control" formControlName="country" type="country" id="countryInput"
+                        placeholder="Country" />
+                    <div [ngClass]="{'hidden' : !country.invalid || (!country.dirty && !country.touched)}"
+                        class="error-container">
+                        <div class="error-icon">
+                            <i class="fas fa-times-circle" style="color: #e50914"></i>
+                        </div>
+                        <div *ngIf="country.errors?.['required']" class="error-message">
+                            Country is required.
+                        </div>
+                        <div *ngIf="country.errors?.['minlength']" class="error-message">
+                            Country should be at least 3 characters long.
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="control-wrapper">
+                    <input class="form-control" formControlName="phone" type="phone" id="phoneInput"
+                        placeholder="Phone" />
+                    <div [ngClass]="{'hidden' : !phone.invalid || (!phone.dirty && !phone.touched)}"
+                        class="error-container">
+                        <div class="error-icon">
+                            <i class="fas fa-times-circle" style="color: #e50914"></i>
+                        </div>
+                        <div *ngIf="phone.errors?.['required']" class="error-message">
+                            Phone number is required.
+                        </div>
+                        <div *ngIf="phone.errors?.['minlength']" class="error-message">
+                            Phone should be at least 9 characters long.
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="2">
+                <button class="btn btn-primary" type="submit" [disabled]="supplierRegistrationForm.invalid" [ngClass]="{
+              'disabled-button':
+                supplierRegistrationForm.invalid 
+            }">
+                    {{ 'Register supplier' }}
+                </button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</div>
