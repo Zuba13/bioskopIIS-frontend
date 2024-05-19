@@ -121,3 +121,9 @@ h2 {
   font-weight: bold;
   border-bottom: 2px solid #e50914; /* Netflix red color */
 }
+
+.rated-button {
+  opacity: 0.5;
+  cursor: not-allowed;
+  /* Any additional styles for the disabled button */
+}

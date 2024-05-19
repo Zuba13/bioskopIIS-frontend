@@ -1,0 +1,42 @@
+<div
+  *ngIf="movie"
+  class="background"
+  [style.backgroundImage]="'url(' + movie.image + ')'"
+></div>
+
+<div class="no-scroll">
+  <div *ngIf="movie" class="review-container">
+    <h2>{{ movie.title }} ({{ movie.year }})</h2>
+
+    <form (ngSubmit)="submitReview()">
+      <div class="star-rating">
+        <label
+          *ngFor="let star of stars; let i = index"
+          (click)="rate(i + 1)"
+          (mouseover)="hover(i + 1)"
+          (mouseleave)="leave()"
+          [class.filled]="i + 1 <= rating || i + 1 <= hovered"
+        >
+          ★
+        </label>
+        <span class="rating">{{ rating }}/10 </span>
+      </div>
+
+      <textarea
+        [(ngModel)]="comment"
+        name="comment"
+        placeholder="Write your review here..."
+        required
+      ></textarea>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="rating === 0 || !comment.trim()"
+        [ngClass]="{ disabled: rating === 0 || !comment.trim() }"
+      >
+        Submit Review
+      </button>
+    </form>
+  </div>
+</div>

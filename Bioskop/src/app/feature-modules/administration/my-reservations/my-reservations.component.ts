@@ -5,6 +5,7 @@ import { Projection } from '../model/projection.model';
 import { Movie } from '../model/movie.model';
 import { forkJoin } from 'rxjs';
 import { AuthService } from 'src/app/infrastructure/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'xp-my-reservations',
@@ -17,14 +18,17 @@ export class MyReservationsComponent implements OnInit {
   pastTickets: Ticket[] = [];
   loadedTicketsCount = 0;
   activeTab: 'upcoming' | 'past' = 'upcoming';
+  reviewedMovieIds = new Set<number>();
 
   constructor(
     private authService: AuthService,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadTickets();
+    this.loadUserReviews();
   }
 
   loadTickets() {
@@ -33,6 +37,19 @@ export class MyReservationsComponent implements OnInit {
       this.tickets = tickets;
       this.loadProjectionsAndMovies();
     });
+  }
+
+  loadUserReviews() {
+    const userId = this.authService.user$.value.id;
+    this.movieService.getReviewsByUserId(userId).subscribe((reviews) => {
+      this.reviewedMovieIds = new Set(reviews.map((review) => review.movieId));
+    });
+  }
+
+  redirectToRateMovie(ticket: Ticket): void {
+    if (ticket.projection?.movieId) {
+      this.router.navigate([`/movie-review/${ticket.projection?.movieId}`]);
+    }
   }
 
   loadProjectionsAndMovies() {

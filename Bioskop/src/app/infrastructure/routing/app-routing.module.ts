@@ -9,6 +9,8 @@ import { MovieProjectionsComponent } from 'src/app/feature-modules/administratio
 import { MovieProjectionComponent } from 'src/app/feature-modules/administration/movie-projection/movie-projection.component';
 import { EditProfileComponent } from '../auth/edit-profile/edit-profile.component';
 import { MyReservationsComponent } from 'src/app/feature-modules/administration/my-reservations/my-reservations.component';
+import { MovieReviewComponent } from 'src/app/feature-modules/administration/movie-review/movie-review.component';
+import { MovieAllReviewsComponent } from 'src/app/feature-modules/administration/movie-all-reviews/movie-all-reviews.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -35,6 +37,16 @@ const routes: Routes = [
   {
     path: 'my-tickets',
     component: MyReservationsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'movie-review/:id',
+    component: MovieReviewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'movie/reviews/:id',
+    component: MovieAllReviewsComponent,
     canActivate: [AuthGuard],
   },
 ];
