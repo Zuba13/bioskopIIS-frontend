@@ -1,0 +1,25 @@
+<div class="background"
+    style="background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg');">
+</div>
+<div class="container">
+    <select class="date-filter">
+        <option value="all">All Dates</option>
+        <option value="today">Today</option>
+        <option value="this-week">This Week</option>
+        <option value="this-month">This Month</option>
+    </select>
+    <button class="get-tickets-btn" routerLink="/create" (click)="OnCreateEvent()">Add New Event</button>
+
+    <div class="event-list">
+        <div class="event-item" *ngFor="let event of events">
+            <div class="event-card">
+                <div class="event-details">
+                    <h3 class="event-title">{{ event.name }}</h3>
+                    <p class="event-info">{{ event.date | date }}</p>
+                    <p class="event-info">{{ event.location }}</p>
+                    <button class="get-tickets-btn">Edit Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

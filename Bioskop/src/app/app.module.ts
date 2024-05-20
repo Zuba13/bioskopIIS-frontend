@@ -19,7 +19,9 @@ import { SupplierRegistrationComponent } from './feature-modules/food-beverage/s
 import { FoodBeverageModule } from './feature-modules/food-beverage/food-beverage.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,9 +42,9 @@ import { FoodBeverageModule } from './feature-modules/food-beverage/food-beverag
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
-      multi: true,
+      multi: true
     },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
