@@ -9,6 +9,9 @@ import { MovieProjectionsComponent } from 'src/app/feature-modules/administratio
 import { MovieProjectionComponent } from 'src/app/feature-modules/administration/movie-projection/movie-projection.component';
 import { EditProfileComponent } from '../auth/edit-profile/edit-profile.component';
 import { MyReservationsComponent } from 'src/app/feature-modules/administration/my-reservations/my-reservations.component';
+import { EventListComponent } from 'src/app/feature-modules/administration/event-list/event-list.component';
+import { EventDetailComponent } from 'src/app/feature-modules/administration/event-detail/event-detail.component';
+import { EventCreateComponent } from 'src/app/feature-modules/administration/event-create/event-create.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -37,10 +40,13 @@ const routes: Routes = [
     component: MyReservationsComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'events', component: EventListComponent },
+  { path: 'events/:id', component: EventDetailComponent },
+  { path: 'create', component: EventCreateComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

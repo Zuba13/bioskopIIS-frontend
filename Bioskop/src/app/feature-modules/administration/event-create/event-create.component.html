@@ -1,0 +1,68 @@
+<div class="container">
+    <!-- <h2>Create Event</h2> -->
+    <form (ngSubmit)="onSubmit()" class="event-form">
+        <div class="form-group">
+            <label for="name" class="form-label">Name:</label>
+            <input id="name" [(ngModel)]="event.name" name="name" required class="form-input">
+        </div>
+        <div class="form-group">
+            <label for="type" class="form-label">Type:</label>
+            <select id="type" [(ngModel)]="event.type" name="type" required (change)="onTypeChange()"
+                class="form-select">
+                <option value="">Select Type</option>
+                <option value="premiere">Premiere</option>
+                <option value="thematicWeek">Thematic Week</option>
+                <option value="movieMarathon">Movie Marathon</option>
+                <option value="birthday">Birthday</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date" class="form-label">Date:</label>
+            <input id="date" [(ngModel)]="event.date" name="date" type="date" required class="form-input">
+        </div>
+        <div class="form-group">
+            <label for="time" class="form-label">Time:</label>
+            <input id="time" [(ngModel)]="event.time" name="time" type="time" required class="form-input">
+        </div>
+        <div class="form-group">
+            <label for="movie" class="form-label">Movie:</label>
+            <input id="movie" [(ngModel)]="event.movie" name="movie" required class="form-input">
+        </div>
+
+        <div *ngIf="event.type === 'premiere'" class="form-group">
+            <label for="specialPrice" class="form-label">Special Price:</label>
+            <input id="specialPrice" [(ngModel)]="event.specialPrice" name="specialPrice" type="number"
+                class="form-input">
+        </div>
+        <div *ngIf="event.type === 'thematicWeek' || event.type === 'movieMarathon'">
+            <div class="form-group">
+                <label for="discount" class="form-label">Discount (% or fixed):</label>
+                <input id="discount" [(ngModel)]="event.discount" name="discount" type="number" class="form-input">
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Create</button>
+    </form>
+
+    <h2>Events Overview</h2>
+    <div class="event-list">
+        <div class="event-item" *ngFor="let event of events">
+            <div class="event-card">
+                <div class="event-details">
+                    <h3 class="event-title">{{ event.name }}</h3>
+                    <p class="event-info">{{ event.date | date }} at {{ event.time }}</p>
+                    <p class="event-info">Type: {{ event.type }}</p>
+                    <p class="event-info">Movie: {{ event.movie }}</p>
+                    <p class="event-info" *ngIf="event.specialPrice">Special Price: {{ event.specialPrice }}</p>
+                    <p class="event-info" *ngIf="event.discount">Discount: {{ event.discount }}</p>
+                    <button class="get-tickets-btn" (click)="toggleEventStatus(event)" *ngIf="!event.active">Toggle
+                        Status</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="background"
+    style="background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg');">
+</div>
