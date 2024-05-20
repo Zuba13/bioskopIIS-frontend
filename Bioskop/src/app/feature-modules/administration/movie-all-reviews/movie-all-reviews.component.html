@@ -1,0 +1,47 @@
+<div
+  class="background"
+  [style.backgroundImage]="'url(' + movie.image + ')'"
+></div>
+
+<div class="movie-details" *ngIf="movie">
+  <h2>{{ movie.title }} ({{ movie.year }}) - User Reviews</h2>
+</div>
+
+<div class="reviews-container">
+  <div *ngIf="reviews.length > 0; else noReviews">
+    <div *ngFor="let review of reviews" class="review-card">
+      <div class="review-header">
+        <img
+          src="assets/profile4.png"
+          alt="Profile Picture"
+          class="profile-picture"
+        />
+        <div class="review-user-info">
+          <small class="username">{{ review.user?.username }}</small>
+          <small class="review-date">{{
+            review.created_at | date : "medium"
+          }}</small>
+        </div>
+      </div>
+      <div class="review-body">
+        <div class="star-rating">
+          <span class="rating-number">{{ review.rating }}</span>
+          <div class="stars">
+            <ng-container
+              *ngFor="
+                let star of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                let i = index
+              "
+            >
+              <i class="star" [class.filled]="review.rating > i"></i>
+            </ng-container>
+          </div>
+        </div>
+        <p>{{ review.comment }}</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noReviews>
+    <p>No reviews found for this movie.</p>
+  </ng-template>
+</div>

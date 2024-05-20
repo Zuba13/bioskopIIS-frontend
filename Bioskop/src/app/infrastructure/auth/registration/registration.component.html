@@ -1,27 +1,19 @@
-<div
-  class="background"
-  [style.backgroundImage]="
+<div class="background" [style.backgroundImage]="
     'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
-  "
-></div>
+  "></div>
 
 <div class="no-scroll">
   <div class="registration-container">
-    <h2 class="title">Sign Up</h2>
-    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+    <h2 class="title" *ngIf="user?.role !== 'admin'; else registerCinemaCashier">Sign Up</h2>
+    <ng-template #registerCinemaCashier>
+      <h2 class="title">Register cashier</h2>
+    </ng-template>
+    <form [formGroup]="registrationForm" (ngSubmit)="user?.role === 'admin' ? registerCashier() : register()">
       <div class="form-group">
         <div class="inside-form-group">
-          <input
-            class="form-control"
-            formControlName="firstName"
-            type="text"
-            id="firstNameInput"
-            placeholder="First Name"
-          />
-          <div
-            *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
-            class="error-container"
-          >
+          <input class="form-control" formControlName="firstName" type="text" id="firstNameInput"
+            placeholder="First Name" />
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="error-container">
             <div class="error-icon">
               <i class="fas fa-times-circle" style="color: #e50914"></i>
             </div>
@@ -36,17 +28,9 @@
           </div>
         </div>
         <div class="inside-form-group">
-          <input
-            class="form-control"
-            formControlName="lastName"
-            type="text"
-            id="lastNameInput"
-            placeholder="Last Name"
-          />
-          <div
-            *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
-            class="error-container"
-          >
+          <input class="form-control" formControlName="lastName" type="text" id="lastNameInput"
+            placeholder="Last Name" />
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="error-container">
             <div class="error-icon">
               <i class="fas fa-times-circle" style="color: #e50914"></i>
             </div>
@@ -63,17 +47,9 @@
       </div>
       <div class="form-group">
         <div class="inside-form-group">
-          <input
-            class="form-control"
-            formControlName="username"
-            type="text"
-            id="usernameInput"
-            placeholder="Username"
-          />
-          <div
-            *ngIf="username.invalid && (username.dirty || username.touched)"
-            class="error-container"
-          >
+          <input class="form-control" formControlName="username" type="text" id="usernameInput"
+            placeholder="Username" />
+          <div *ngIf="username.invalid && (username.dirty || username.touched)" class="error-container">
             <div class="error-icon">
               <i class="fas fa-times-circle" style="color: #e50914"></i>
             </div>
@@ -86,17 +62,8 @@
           </div>
         </div>
         <div class="inside-form-group">
-          <input
-            class="form-control"
-            formControlName="email"
-            type="email"
-            id="emailInput"
-            placeholder="Email"
-          />
-          <div
-            *ngIf="email.invalid && (email.dirty || email.touched)"
-            class="error-container"
-          >
+          <input class="form-control" formControlName="email" type="email" id="emailInput" placeholder="Email" />
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-container">
             <div class="error-icon">
               <i class="fas fa-times-circle" style="color: #e50914"></i>
             </div>
@@ -111,17 +78,9 @@
       </div>
       <div class="form-group">
         <div class="inside-form-group">
-          <input
-            class="form-control"
-            formControlName="password"
-            type="password"
-            id="passwordInput"
-            placeholder="Password"
-          />
-          <div
-            *ngIf="password.invalid && (password.dirty || password.touched)"
-            class="error-container"
-          >
+          <input class="form-control" formControlName="password" type="password" id="passwordInput"
+            placeholder="Password" />
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-container">
             <div class="error-icon">
               <i class="fas fa-times-circle" style="color: #e50914"></i>
             </div>
@@ -134,59 +93,40 @@
           </div>
         </div>
         <div class="inside-form-group">
-          <input
-            class="form-control"
-            type="password"
-            formControlName="confirmPassword"
-            id="confirmPasswordInput"
-            placeholder="Confirm Password"
-          />
+          <input class="form-control" type="password" formControlName="confirmPassword" id="confirmPasswordInput"
+            placeholder="Confirm Password" />
           <div *ngIf="true" class="error-container">
-            <div
-              class="error-icon"
-              *ngIf="
+            <div class="error-icon" *ngIf="
                 (confirmPassword.value === '' && password.value !== '') ||
                 (confirmPassword.value !== password.value &&
                   confirmPassword.value !== '')
-              "
-            >
+              ">
               <i class="fas fa-times-circle" style="color: #e50914"></i>
             </div>
-            <div
-              *ngIf="confirmPassword.value === '' && password.value !== ''"
-              class="error-message"
-            >
+            <div *ngIf="confirmPassword.value === '' && password.value !== ''" class="error-message">
               Confirm Password is required.
             </div>
-            <div
-              class="error-message"
-              *ngIf="
+            <div class="error-message" *ngIf="
                 confirmPassword.value !== password.value &&
                 confirmPassword.value !== ''
-              "
-            >
+              ">
               Passwords do not match.
             </div>
           </div>
         </div>
       </div>
-      <button
-        class="btn btn-primary"
-        type="submit"
-        [disabled]="registrationForm.invalid"
-        [ngClass]="{
+      <button class="btn btn-primary" type="submit" [disabled]="registrationForm.invalid" [ngClass]="{
           'disabled-button':
             registrationForm.invalid ||
             confirmPassword.value === '' ||
             confirmPassword.value !== password.value
-        }"
-      >
-        Sign Up
+        }">
+        {{ user?.role !== 'admin' ? 'Sign Up' : 'Register' }}
       </button>
     </form>
-    <div class="signin-link">
+    <div class="signin-link" *ngIf="user?.role !== 'admin'">
       Already have an account?
-      <span (click)="navigateToLoginPage()">Sign in here.</span>
+      <span (click)=" navigateToLoginPage()">Sign in here.</span>
     </div>
   </div>
 </div>

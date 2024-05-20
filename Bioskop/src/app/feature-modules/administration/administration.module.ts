@@ -11,6 +11,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventCreateComponent } from './event-create/event-create.component';
+import { MovieReviewComponent } from './movie-review/movie-review.component';
+import { MovieAllReviewsComponent } from './movie-all-reviews/movie-all-reviews.component';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +24,8 @@ import { EventCreateComponent } from './event-create/event-create.component';
     EventListComponent,
     EventDetailComponent,
     EventCreateComponent,
+    MovieReviewComponent,
+    MovieAllReviewsComponent,
   ],
   imports: [
     CommonModule,

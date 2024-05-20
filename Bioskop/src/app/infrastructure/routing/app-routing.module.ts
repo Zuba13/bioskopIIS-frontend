@@ -12,6 +12,15 @@ import { MyReservationsComponent } from 'src/app/feature-modules/administration/
 import { EventListComponent } from 'src/app/feature-modules/administration/event-list/event-list.component';
 import { EventDetailComponent } from 'src/app/feature-modules/administration/event-detail/event-detail.component';
 import { EventCreateComponent } from 'src/app/feature-modules/administration/event-create/event-create.component';
+import { MovieReviewComponent } from 'src/app/feature-modules/administration/movie-review/movie-review.component';
+import { MovieAllReviewsComponent } from 'src/app/feature-modules/administration/movie-all-reviews/movie-all-reviews.component';
+import { SupplierRegistrationComponent } from 'src/app/feature-modules/food-beverage/supplier-registration/supplier-registration.component';
+import { SupplierContractComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/supplier-contract.component';
+import { BaseContractDataFormComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/base-contract-data-form/base-contract-data-form.component';
+import { ContractOverviewComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/contract-overview/contract-overview.component';
+import { ContractsTableComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/contracts-table/contracts-table.component';
+import { SuppliersTableComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/suppliers-table/suppliers-table.component';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -43,6 +52,36 @@ const routes: Routes = [
   { path: 'events', component: EventListComponent },
   { path: 'events/:id', component: EventDetailComponent },
   { path: 'create', component: EventCreateComponent }
+  {
+    path: 'movie-review/:id',
+    component: MovieReviewComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'movie/reviews/:id',
+    component: MovieAllReviewsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'supplier-register',
+    component: SupplierRegistrationComponent,
+    // canActivate: [AuthGuard],
+  },
+  {
+    path: 'supplier-contract',
+    component: SupplierContractComponent,
+    // canActivate: [AuthGuard],
+  },
+  {
+    path: 'contracts',
+    component: ContractsTableComponent,
+    // canActivate: [AuthGuard],
+  },
+  {
+    path: 'suppliers',
+    component: SuppliersTableComponent,
+    // canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
