@@ -1,3 +1,4 @@
+import { Timeslot } from '../../management/model/timeslot.model';
 import { Movie } from './movie.model';
 
 export interface Projection {
@@ -7,7 +8,9 @@ export interface Projection {
   price: number;
   date: string; // Assuming the date will be in ISO 8601 format, e.g., "2024-04-10T15:30:00Z"
   time: string;
+  timeslot: Timeslot;
   createdAt: string; // Assuming the createdAt and updatedAt will be in ISO 8601 format
   updatedAt: string;
   movie?: Movie;
+  isCanceled: boolean;
 }
