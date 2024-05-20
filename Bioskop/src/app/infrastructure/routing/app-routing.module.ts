@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   { path: 'events', component: EventListComponent },
   { path: 'events/:id', component: EventDetailComponent },
-  { path: 'create', component: EventCreateComponent }
+  { path: 'create', component: EventCreateComponent },
   {
     path: 'movie-review/:id',
     component: MovieReviewComponent,

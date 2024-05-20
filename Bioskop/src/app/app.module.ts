@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './infrastructure/auth/jwt/jwt.interceptor';
 import { SupplierRegistrationComponent } from './feature-modules/food-beverage/supplier-registration/supplier-registration.component';
 import { FoodBeverageModule } from './feature-modules/food-beverage/food-beverage.module';
+import { ManagementModule } from './feature-modules/management/management.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FoodBeverageModule } from './feature-modules/food-beverage/food-beverag
     HttpClientModule,
     MatSnackBarModule,
     FoodBeverageModule,
+    ManagementModule
   ],
   providers: [
     {
