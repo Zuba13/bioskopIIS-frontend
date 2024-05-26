@@ -1,0 +1,43 @@
+<div class="background" [style.backgroundImage]="
+    'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
+  "></div>
+
+<div class="no-scroll">
+    <div class="registration-container">
+        <h2 class="title">Add Movie</h2>
+        <form [formGroup]="addMovieForm" (ngSubmit)="addMovie()">
+            <div class="form-group">
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="title" type="text" id="titleInput" placeholder="Title" />
+                </div>
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="year" type="number" id="yearInput" placeholder="Year"  value="2024"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="genre" type="text" id="genreInput" placeholder="Genre"  />
+                </div>
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="duration" type="number" id="durationInput" placeholder="Duration"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="language" type="text" id="languageInput" placeholder="Language"  />
+                </div>
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="defaultPrice" type="number" id="defaultPriceInput" placeholder="Default Ticket Price"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="inside-form-group">
+                    <input class="form-control" formControlName="image" type="text" id="imageInput" placeholder="Image link"  />
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" >
+                Add Movie
+            </button>
+        </form>
+    </div>
+</div>

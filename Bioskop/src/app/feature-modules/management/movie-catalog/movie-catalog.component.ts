@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogService } from '../catalog.service';
 import { Movie } from '../../administration/model/movie.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'xp-movie-catalog',
@@ -17,6 +18,7 @@ export class MovieCatalogComponent implements OnInit {
 
   constructor(
     private catalogService: CatalogService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,10 @@ export class MovieCatalogComponent implements OnInit {
         this.movies = data;
       }
     )
+  }
+
+  routeMovieDetails(movieId: number): void {
+    this.router.navigate(['/movie-catalog', movieId]);
   }
 
 }

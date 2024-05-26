@@ -7,6 +7,7 @@
 
 <div class="container">
     <div class="filter-bar">
+
       <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
         <input matInput [(ngModel)]="title" placeholder="Filter by title">
@@ -29,14 +30,14 @@
   
       <button class="filter-button" (click)="getMovies()">Apply Filters</button>
     </div>
-  
+
     <div class="movie-cards">
         <div class="movie-card" *ngFor="let movie of movies">
             <img [src]="movie.image" alt="{{movie.title}}">
             <h2>
                 <span class="movie-title">{{movie.title}} ({{movie.year}})</span>
               </h2>
-            <button class="details-button">See details</button>
+            <button (click)="routeMovieDetails(movie.id)" class="details-button">See details</button>
         </div>
     </div>
   </div>

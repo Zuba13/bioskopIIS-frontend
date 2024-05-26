@@ -21,6 +21,8 @@ import { ContractOverviewComponent } from 'src/app/feature-modules/food-beverage
 import { ContractsTableComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/contracts-table/contracts-table.component';
 import { SuppliersTableComponent } from 'src/app/feature-modules/food-beverage/supplier-contract/suppliers-table/suppliers-table.component';
 import { MovieCatalogComponent } from 'src/app/feature-modules/management/movie-catalog/movie-catalog.component';
+import { MovieDetailsComponent } from 'src/app/feature-modules/management/movie-details/movie-details.component';
+import { AddMovieComponent } from 'src/app/feature-modules/management/add-movie/add-movie.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -86,6 +88,14 @@ const routes: Routes = [
   {
     path: 'movie-catalog',
     component: MovieCatalogComponent,
+  },
+  {
+    path: 'movie-catalog/:id',
+    component: MovieDetailsComponent,
+  },
+  {
+    path: 'movie-catalog-add',
+    component: AddMovieComponent,
   },
 ];
 

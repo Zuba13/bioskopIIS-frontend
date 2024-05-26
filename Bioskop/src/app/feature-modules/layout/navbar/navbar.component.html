@@ -4,9 +4,8 @@
     <ul class="nav-links">
       <li><a routerLink="/home">Home</a></li>
       <li><a *ngIf="user?.role == 'manager'" routerLink="/movie-catalog">Catalog</a></li>
+      <li><a *ngIf="user?.role == 'manager'" routerLink="/movie-catalog-add">Add Movie</a></li>
       <li><a *ngIf="user?.role == 'manager'" routerLink="/movie-catalog">Repertoire</a></li>
-      <li><a routerLink="/movie-list">Movies</a></li>
-      <li><a *ngIf="user?.id !== 0" routerLink="/my-tickets">My Tickets</a></li>
       <li><a *ngIf="user?.id !== 0" routerLink="/events">Events</a></li>
       <li><a *ngIf="user?.id !== 0 && user?.role === 'user'" routerLink="/movie-list">Movies</a></li>
       <li><a *ngIf="user?.id !== 0 && user?.role == 'user'" routerLink="/my-tickets">My Tickets</a></li>

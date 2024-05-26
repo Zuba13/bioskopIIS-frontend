@@ -41,7 +41,7 @@
           <h2 class="movie-title">{{ movie.title }} ({{ movie.year }})</h2>
           <div class="movie-info">
             <i class="fa fa-star"></i> {{ movie.rating }} |
-            {{ shortenNum(movie.numVotes) }} votes
+            {{ shortenNum(movie.numVotes!) }} votes
           </div>
           <div class="movie-info">{{ movie.duration }} min</div>
           <button class="get-tickets-btn" (click)="goToMovieDetails(movie.id)">

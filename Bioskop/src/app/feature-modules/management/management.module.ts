@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/infrastructure/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MovieCatalogComponent } from './movie-catalog/movie-catalog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
 
 
 @NgModule({
   declarations: [
-    MovieCatalogComponent
+    MovieCatalogComponent,
+    MovieDetailsComponent,
+    AddMovieComponent
   ],
   imports: [
     CommonModule,
@@ -21,10 +25,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatOptionModule
   ],
   exports: [
-    MovieCatalogComponent
+    MovieCatalogComponent,
+    MovieDetailsComponent,
+    AddMovieComponent
   ],
 })
 export class ManagementModule {}

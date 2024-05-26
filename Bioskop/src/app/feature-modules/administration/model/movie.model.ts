@@ -7,14 +7,14 @@ export interface Movie {
   title: string;
   year: number;
   genre: string;
-  rating: number;
-  numVotes: number;
+  rating?: number;
+  numVotes?: number;
   duration: number;
   language: string;
   defaultPrice: number;
   image: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   projections?: Projection[] | null;
   actors: Actor[]; 
   directors: Director[];
