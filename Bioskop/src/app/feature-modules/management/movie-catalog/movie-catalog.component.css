@@ -77,7 +77,7 @@
     flex-direction: column;
     justify-content: space-between; /* Distribute space evenly */
     align-items: center;
-    height: 500px; /* Allow the card to stretch vertically */
+    height: 550px; /* Allow the card to stretch vertically */
     max-width: 260px;
     margin: 10px 0px;
     background-color: rgba(14, 14, 14, 0.7);
@@ -98,7 +98,7 @@
 
   .movie-card img {
     width: 100%;
-    max-height: 75%;
+    max-height: 70%;
     height: auto;
   }
   
@@ -117,7 +117,7 @@
     cursor: pointer; 
     transition: background-color 0.3s ease; 
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     font-weight: 600;
   }
   

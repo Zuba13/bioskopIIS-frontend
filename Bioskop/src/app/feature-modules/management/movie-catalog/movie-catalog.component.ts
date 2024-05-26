@@ -37,4 +37,8 @@ export class MovieCatalogComponent implements OnInit {
     this.router.navigate(['/movie-catalog', movieId]);
   }
 
+  routeAddContract(movieId: number): void {
+    this.router.navigate(['/add-distribution-contract', movieId]);
+  }
+
 }

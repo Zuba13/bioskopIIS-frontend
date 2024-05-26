@@ -9,13 +9,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import { AddDistrinutionContractComponent } from './add-distrinution-contract/add-distrinution-contract.component';
 
 
 @NgModule({
   declarations: [
     MovieCatalogComponent,
     MovieDetailsComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    AddDistrinutionContractComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
   exports: [
     MovieCatalogComponent,
     MovieDetailsComponent,
-    AddMovieComponent
+    AddMovieComponent,
+    AddDistrinutionContractComponent
   ],
 })
 export class ManagementModule {}

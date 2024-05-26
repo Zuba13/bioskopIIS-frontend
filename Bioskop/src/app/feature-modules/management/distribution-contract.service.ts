@@ -13,7 +13,14 @@ export class DistributionContractService {
 
   constructor(private http: HttpClient) { }
 
-  addContract(contract: DistributionContract): Observable<DistributionContract> {    
+  addContract(contract: DistributionContract): Observable<DistributionContract> {   
+    if (contract.model === 'Bidding') {
+      contract.weeklyCosts = undefined;
+      contract.percentage = undefined;
+    }
+    if (contract.model === 'Percentage') {
+      contract.agreedSum = undefined;
+    }
     return this.http.post<DistributionContract>(this.apiUrl + 'distribution/contract', contract);
   }
 

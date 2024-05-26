@@ -23,6 +23,7 @@ import { SuppliersTableComponent } from 'src/app/feature-modules/food-beverage/s
 import { MovieCatalogComponent } from 'src/app/feature-modules/management/movie-catalog/movie-catalog.component';
 import { MovieDetailsComponent } from 'src/app/feature-modules/management/movie-details/movie-details.component';
 import { AddMovieComponent } from 'src/app/feature-modules/management/add-movie/add-movie.component';
+import { AddDistrinutionContractComponent } from 'src/app/feature-modules/management/add-distrinution-contract/add-distrinution-contract.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: 'movie-catalog-add',
     component: AddMovieComponent,
+  },
+  {
+    path: 'add-distribution-contract/:movieId',
+    component: AddDistrinutionContractComponent,
   },
 ];
 
