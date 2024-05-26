@@ -1,0 +1,42 @@
+<div
+  class="background"
+  [style.backgroundImage]="
+    'url(https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/406151c6-b258-4933-8bc2-2a8f92831d47/RS-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg)'
+  "
+></div>
+
+<div class="container">
+    <div class="filter-bar">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="title" placeholder="Filter by title">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+        <input matInput [(ngModel)]="year" placeholder="Filter by year">
+      </mat-form-field>
+  
+      <div>
+        <label for="onlyActive" style="color: white;">Active Contract:</label>
+        <input type="checkbox" id="onlyActive" [(ngModel)]="onlyActive">
+      </div>
+    
+      <div>
+        <label for="withContract" style="color: white;">With Contract:</label>
+        <input type="checkbox" id="withContract" [(ngModel)]="withContract">
+      </div>
+  
+      <button class="filter-button" (click)="getMovies()">Apply Filters</button>
+    </div>
+  
+    <div class="movie-cards">
+        <div class="movie-card" *ngFor="let movie of movies">
+            <img [src]="movie.image" alt="{{movie.title}}">
+            <h2>
+                <span class="movie-title">{{movie.title}} ({{movie.year}})</span>
+              </h2>
+            <button class="details-button">See details</button>
+        </div>
+    </div>
+  </div>
